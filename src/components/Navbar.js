@@ -11,8 +11,8 @@ const Container = styled.View`
 const Text = styled.Text`
   color: red;
   font-size: 50;
-  font-weight: bold;
   text-align: center;
+  font-family: 'Roboto-medium';
 `;
 
 const Navbar = () => {

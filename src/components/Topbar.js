@@ -12,14 +12,13 @@ const Container = styled.View`
     (Platform.OS === 'ios' ? 18 : 0)};
   height: 56;
   width: 100%;
-  font-weight: 500;
-  background-color: blue;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 const Heading = styled.Text`
-  color: red;
+  color: ${({ theme }) => theme.color.black};
   font-size: 20;
-  font-weight: bold;
+  font-family: 'Roboto-bold';
   text-align: center;
 `;
 
@@ -29,8 +28,7 @@ const Topbar = () => {
       <Icon
         name="menu"
         size={24}
-        color={'#000'}
-        backgroundColor="#3b5998"
+        color={'#252525'}
         style={{ margin: 0, padding: 16 }}
       />
       <Heading>Home</Heading>
