@@ -18,7 +18,7 @@ const Container = styled.View`
 const Heading = styled.Text`
   color: ${({ theme }) => theme.color.black};
   font-size: 20;
-  font-family: 'Roboto-bold';
+  font-family: 'Roboto-medium';
   text-align: center;
 `;
 

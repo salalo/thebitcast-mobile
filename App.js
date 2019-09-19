@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import styled from 'styled-components';
 import Home from './src/pages/Home';
@@ -37,7 +38,9 @@ class App extends Component {
     if (!this.state.fontLoaded) {
       return (
         <MasterStyle>
-          <GlobalStyle>{/* <AppLoading /> */}</GlobalStyle>
+          <GlobalStyle>
+            <AppLoading />
+          </GlobalStyle>
         </MasterStyle>
       );
     }
