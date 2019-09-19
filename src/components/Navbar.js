@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { StyleSheet } from 'react-native';
 
 const Container = styled.View`
   display: flex;
@@ -9,9 +10,10 @@ const Container = styled.View`
   height: 56;
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
+  elevation: 5;
 `;
 
-const ButtonWrapper = styled.View`
+const ButtonsWrapper = styled.View`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -47,7 +49,7 @@ const navBtns = [
 const Navbar = () => {
   return (
     <Container>
-      <ButtonWrapper>
+      <ButtonsWrapper>
         {navBtns.map(item => (
           <Button key={item.key + 'Btn'}>
             <Icon
@@ -60,7 +62,7 @@ const Navbar = () => {
             <Text>{item.text}</Text>
           </Button>
         ))}
-      </ButtonWrapper>
+      </ButtonsWrapper>
     </Container>
   );
 };

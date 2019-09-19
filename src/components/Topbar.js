@@ -13,6 +13,7 @@ const Container = styled.View`
   height: 56;
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
+  elevation: 5;
 `;
 
 const Heading = styled.Text`
