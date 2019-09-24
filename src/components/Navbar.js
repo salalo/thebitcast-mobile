@@ -45,13 +45,16 @@ const navBtns = [
   { key: 'search', text: 'Search', icon: 'search' }
 ];
 
-const Navbar = () => {
+const Navbar = ({ navigation }) => {
   return (
     <Container>
       <ButtonsWrapper>
         {navBtns.map(item => (
           <Button key={item.key + 'Btn'}>
             <Icon
+              onPress={() => {
+                navigation.navigate(item.text);
+              }}
               name={item.icon}
               size={24}
               color={'#252525'}

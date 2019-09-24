@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Topbar from '../components/Topbar';
 import Navbar from '../components/Navbar';
+import { Button } from 'react-native';
 
 const Container = styled.View`
   /* flex: 1;
@@ -15,13 +16,15 @@ const Container = styled.View`
   padding: 0;
 `;
 
-const Home = () => {
-  return (
-    <Container>
-      <Topbar />
-      <Navbar />
-    </Container>
-  );
-};
+class Home extends Component {
+  render() {
+    return (
+      <Container>
+        <Topbar />
+        <Navbar navigation={this.props.navigation} />
+      </Container>
+    );
+  }
+}
 
 export default Home;

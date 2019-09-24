@@ -3,7 +3,7 @@ import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import styled from 'styled-components';
-import Home from './src/pages/Home';
+import AppNavigator from './AppNavigator';
 
 const GlobalStyle = styled.View`
   background-color: ${({ theme }) => theme.color.black};
@@ -47,7 +47,7 @@ class App extends Component {
     return (
       <MasterStyle>
         <GlobalStyle>
-          <Home />
+          <AppNavigator />
         </GlobalStyle>
       </MasterStyle>
     );
