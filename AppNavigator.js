@@ -6,14 +6,22 @@ import Following from './src/scenes/Following';
 import Bookmarks from './src/scenes/Bookmarks';
 import Search from './src/scenes/Search';
 
-const navStack = createStackNavigator({
+const RouteConfigs = {
   Home: { screen: Home },
   Categories: { screen: Categories },
   Following: { screen: Following },
   Bookmarks: { screen: Bookmarks },
   Search: { screen: Search }
-});
+};
 
+const StackNavigatorConfig = {
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false
+  }
+};
+
+const navStack = createStackNavigator(RouteConfigs, StackNavigatorConfig);
 const AppNavigator = createAppContainer(navStack);
 
 export default AppNavigator;

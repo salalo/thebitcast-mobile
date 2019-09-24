@@ -22,7 +22,7 @@ const ButtonsWrapper = styled.View`
   width: 100%;
 `;
 
-const Button = styled.View`
+const Button = styled.TouchableOpacity`
   height: 100%;
   width: 20%;
   display: flex;
@@ -50,11 +50,11 @@ const Navbar = ({ navigation }) => {
     <Container>
       <ButtonsWrapper>
         {navBtns.map(item => (
-          <Button key={item.key + 'Btn'}>
+          <Button
+            key={item.key + 'Btn'}
+            onPress={() => navigation.navigate(item.text)}
+          >
             <Icon
-              onPress={() => {
-                navigation.navigate(item.text);
-              }}
               name={item.icon}
               size={24}
               color={'#252525'}

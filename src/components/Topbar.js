@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import styled from 'styled-components';
 import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -24,12 +24,9 @@ const Heading = styled.Text`
   text-align: center;
 `;
 
-const Topbar = () => {
+const Topbar = props => {
   const [isHamburgerOpen, setHamburgerState] = useState(false);
-
-  const toggleHamburgerMenu = () => {
-    setHamburgerState(!isHamburgerOpen);
-  };
+  const toggleHamburgerMenu = () => setHamburgerState(!isHamburgerOpen);
 
   return (
     <Container>
@@ -40,7 +37,7 @@ const Topbar = () => {
         style={{ margin: 0, padding: 16 }}
         onPress={toggleHamburgerMenu}
       />
-      <Heading>Home</Heading>
+      <Heading>{props.heading}</Heading>
       <Hamburger isOpen={isHamburgerOpen} />
     </Container>
   );
