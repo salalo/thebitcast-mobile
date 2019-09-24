@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet } from 'react-native';
 
 const Container = styled.View`
   display: flex;

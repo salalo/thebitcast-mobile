@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Hamburger from './Hamburger';
 
 const Container = styled.View`
   display: flex;
@@ -24,15 +25,23 @@ const Heading = styled.Text`
 `;
 
 const Topbar = () => {
+  const [isHamburgerOpen, setHamburgerState] = useState(false);
+
+  const toggleHamburgerMenu = () => {
+    setHamburgerState(!isHamburgerOpen);
+  };
+
   return (
     <Container>
       <Icon
-        name="menu"
+        name={isHamburgerOpen ? 'arrow-back' : 'menu'}
         size={24}
         color={'#252525'}
         style={{ margin: 0, padding: 16 }}
+        onPress={toggleHamburgerMenu}
       />
       <Heading>Home</Heading>
+      <Hamburger isOpen={isHamburgerOpen} />
     </Container>
   );
 };
