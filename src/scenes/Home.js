@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Topbar from '../components/Topbar';
-import Navbar from '../components/Navbar';
+import Navbar from '../components/Navbar/Navbar';
 
 const Container = styled.View`
   background-color: ${({ theme }) => theme.color.white};

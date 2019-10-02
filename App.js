@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import styled from 'styled-components';
-import AppNavigator from './AppNavigator';
+import Navigator from './src/Navigator';
+import { store } from './src/store';
 
 const GlobalStyle = styled.View`
   background-color: ${({ theme }) => theme.color.black};
@@ -29,7 +31,7 @@ class App extends Component {
       'Roboto-bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
       'Roboto-black': require('./src/assets/fonts/Roboto-Black.ttf'),
 
-      Turret: require('./src/assets/fonts/TurretRoad-Regular.ttf')
+      Turret: require('./src/assets/fonts/TurretRoad-Regular.ttf'),
     });
     this.setState({ fontLoaded: true });
   }
@@ -47,7 +49,9 @@ class App extends Component {
     return (
       <MasterStyle>
         <GlobalStyle>
-          <AppNavigator />
+          <Provider store={store}>
+            <Navigator />
+          </Provider>
         </GlobalStyle>
       </MasterStyle>
     );

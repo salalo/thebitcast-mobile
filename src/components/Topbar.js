@@ -1,8 +1,8 @@
-import React, { useState, Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Hamburger from './Hamburger';
+import Hamburger from './Hamburger/Hamburger';
 
 const Container = styled.View`
   display: flex;

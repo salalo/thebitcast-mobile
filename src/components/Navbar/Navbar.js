@@ -42,7 +42,7 @@ const navBtns = [
   { key: 'categories', text: 'Categories', icon: 'apps' },
   { key: 'following', text: 'Following', icon: 'favorite' },
   { key: 'bookmarks', text: 'Bookmarks', icon: 'bookmark' },
-  { key: 'search', text: 'Search', icon: 'search' }
+  { key: 'search', text: 'Search', icon: 'search' },
 ];
 
 const Navbar = ({ navigation }) => {
@@ -52,16 +52,24 @@ const Navbar = ({ navigation }) => {
         {navBtns.map(item => (
           <Button
             key={item.key + 'Btn'}
-            onPress={() => navigation.navigate(item.text)}
-          >
+            onPress={() => navigation.navigate(item.text)}>
             <Icon
               name={item.icon}
               size={24}
-              color={'#252525'}
+              color={
+                item.text === navigation.state.routeName ? '#F44336' : '#252525'
+              }
               style={{ marginBottom: -5 }}
               key={item.key}
             />
-            <Text>{item.text}</Text>
+            <Text
+              style={
+                item.text === navigation.state.routeName
+                  ? { color: '#F44336' }
+                  : { color: '#252525' }
+              }>
+              {item.text}
+            </Text>
           </Button>
         ))}
       </ButtonsWrapper>

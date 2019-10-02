@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Topbar from '../components/Topbar';
+import Navbar from '../components/Navbar/Navbar';
 
 const StyledCategories = styled.View`
   background-color: ${({ theme }) => theme.color.white};
@@ -17,13 +18,16 @@ const Text = styled.Text`
   font-family: 'Roboto-regular';
 `;
 
-const Categories = () => {
-  return (
-    <StyledCategories>
-      <Topbar heading="Categories" />
-      <Text>SHOPEN</Text>
-    </StyledCategories>
-  );
-};
+class Categories extends Component {
+  render() {
+    return (
+      <StyledCategories>
+        <Topbar heading="Categories" />
+        <Text>SHOPEN</Text>
+        <Navbar navigation={this.props.navigation} />
+      </StyledCategories>
+    );
+  }
+}
 
 export default Categories;
