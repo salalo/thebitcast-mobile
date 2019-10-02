@@ -35,7 +35,7 @@ const Topbar = props => {
         size={24}
         color={'#252525'}
         style={{ margin: 0, padding: 16 }}
-        onPress={toggleHamburgerMenu}
+        onPress={isHamburgerOpen ? null : toggleHamburgerMenu}
       />
       <Heading>{props.heading}</Heading>
       <Hamburger isOpen={isHamburgerOpen} />
