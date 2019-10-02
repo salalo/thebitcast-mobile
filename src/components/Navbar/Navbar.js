@@ -10,6 +10,7 @@ const Container = styled.View`
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
   elevation: 5;
+  z-index: -2;
 `;
 
 const ButtonsWrapper = styled.View`
