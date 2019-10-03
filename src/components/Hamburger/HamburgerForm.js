@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import userImg from '../../assets/imgs/profile.png';
 
 const Container = styled.View`
   width: 70%;
@@ -9,10 +10,50 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.color.white};
 `;
 
-const UserInfo = styled.View``;
-const FormList = styled.View``;
-const ListItemBtn = styled.TouchableOpacity``;
-const ListItemText = styled.Text``;
+const UserInfo = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 25%;
+  padding-left: 16px;
+`;
+const UserImage = styled.Image`
+  width: 60px;
+  height: 60px;
+  border-radius: 100;
+`;
+const UserName = styled.Text`
+  font-family: 'Roboto-medium';
+  font-size: 20px;
+  margin-top: 16px;
+`;
+const UserEmail = styled.Text`
+  font-family: 'Roboto-light';
+  font-size: 13px;
+`;
+
+const Separator = styled.View`
+  height: 1px;
+  margin: 30px 16px 15px 16px;
+  opacity: 0.1;
+  background-color: ${({ theme }) => theme.color.black};
+`;
+
+const FormList = styled.View`
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+`;
+const ListItemBtn = styled.TouchableOpacity`
+  display: flex;
+  flex-direction: row;
+  padding: 15px 0 15px 16px;
+`;
+const ListItemText = styled.Text`
+  font-family: 'Roboto-medium';
+  font-size: 14px;
+  margin-left: 35px;
+`;
 
 const listItems = [
   { key: 'upload', text: 'Upload', icon: 'cloud-upload', scene: 'Upload' },
@@ -38,17 +79,40 @@ const listItems = [
 const HamburgerForm = () => {
   return (
     <Container>
-      <UserInfo></UserInfo>
+      <UserInfo>
+        <UserImage source={userImg} />
+        <UserName>Olivia Heldens</UserName>
+        <UserEmail>example@email.com</UserEmail>
+      </UserInfo>
+      <Separator />
       <FormList>
         {listItems.map(item => (
-          <ListItemBtn key={'btn__' + item.key}>
+          <ListItemBtn
+            key={'btn__' + item.key}
+            style={
+              item.key === 'sign_out'
+                ? { position: 'absolute', bottom: 0, width: '100%' }
+                : null
+            }>
             <Icon
               name={item.icon}
               size={24}
-              color={'#252525'}
+              color={
+                item.key === 'our_mission' || item.key === 'premium'
+                  ? '#F44336'
+                  : '#252525'
+              }
               key={'icon__' + item.key}
             />
-            <ListItemText key={'text__' + item.key}>{item.text}</ListItemText>
+            <ListItemText
+              key={'text__' + item.key}
+              style={
+                item.key === 'our_mission' || item.key === 'premium'
+                  ? { color: '#F44336' }
+                  : { color: '#252525' }
+              }>
+              {item.text}
+            </ListItemText>
           </ListItemBtn>
         ))}
       </FormList>
