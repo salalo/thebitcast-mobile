@@ -23,8 +23,9 @@ const RightInner = styled.TouchableOpacity`
   background-color: #000000;
 `;
 
-const Hamburger = ({ isOpen }) => {
+const Hamburger = ({ isOpen, toggleHamburger }) => {
   console.log(isOpen, Dimensions.get('window').width);
+
   return (
     <Container
       isOpen={isOpen}
@@ -35,7 +36,7 @@ const Hamburger = ({ isOpen }) => {
         height: Dimensions.get('window').height,
       }}>
       <HamburgerForm />
-      <RightInner onPress={console.log('CHUUUUUUUUUUUUJ')}></RightInner>
+      <RightInner onPress={toggleHamburger}></RightInner>
     </Container>
   );
 };

@@ -4,17 +4,26 @@ import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Hamburger from './Hamburger/Hamburger';
 
+const Overflow = styled.View`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: ${(Platform.OS === 'android' ? 24 : 0) ||
+    (Platform.OS === 'ios' ? 18 : 0)};
+`;
+
 const Container = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-top: ${(Platform.OS === 'android' ? 24 : 0) ||
-    (Platform.OS === 'ios' ? 18 : 0)};
   height: 56;
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
   elevation: 5;
+  z-index: -2;
 `;
 
 const Heading = styled.Text`
@@ -29,17 +38,19 @@ const Topbar = props => {
   const toggleHamburgerMenu = () => setHamburgerState(!isHamburgerOpen);
 
   return (
-    <Container>
-      <Icon
-        name={isHamburgerOpen ? 'arrow-back' : 'menu'}
-        size={24}
-        color={'#252525'}
-        style={{ margin: 0, padding: 16 }}
-        onPress={isHamburgerOpen ? null : toggleHamburgerMenu}
-      />
-      <Heading>{props.heading}</Heading>
-      <Hamburger isOpen={isHamburgerOpen} />
-    </Container>
+    <Overflow>
+      <Container>
+        <Icon
+          name={isHamburgerOpen ? 'arrow-back' : 'menu'}
+          size={24}
+          color={'#252525'}
+          style={{ margin: 0, padding: 16 }}
+          onPress={isHamburgerOpen ? null : toggleHamburgerMenu}
+        />
+        <Heading>{props.heading}</Heading>
+      </Container>
+      <Hamburger toggleHamburger={toggleHamburgerMenu} isOpen={isHamburgerOpen} />
+    </Overflow>
   );
 };
 
