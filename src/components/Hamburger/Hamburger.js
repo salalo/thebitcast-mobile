@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 import styled from 'styled-components';
 import HamburgerForm from './HamburgerForm';
 
@@ -14,6 +14,8 @@ const Container = styled.View`
   z-index: -1;
   width: 100%;
   elevation: 5;
+  margin-top: ${(Platform.OS === 'android' ? 24 : 0) ||
+    (Platform.OS === 'ios' ? 18 : 0)};
 `;
 
 const RightInner = styled.TouchableOpacity`
