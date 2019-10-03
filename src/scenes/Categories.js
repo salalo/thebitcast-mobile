@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Platform } from 'react-native';
 import styled from 'styled-components';
 import Topbar from '../components/Topbar';
 import Navbar from '../components/Navbar/Navbar';

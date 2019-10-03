@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Platform } from 'react-native';
+import { View, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Hamburger from './Hamburger/Hamburger';
-
-const Overflow = styled.View`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: ${(Platform.OS === 'android' ? 24 : 0) ||
-    (Platform.OS === 'ios' ? 18 : 0)};
-`;
 
 const Container = styled.View`
   display: flex;
@@ -24,6 +14,8 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.color.white};
   elevation: 5;
   z-index: -2;
+  margin-top: ${(Platform.OS === 'android' ? 24 : 0) ||
+    (Platform.OS === 'ios' ? 18 : 0)};
 `;
 
 const Heading = styled.Text`
@@ -38,7 +30,7 @@ const Topbar = props => {
   const toggleHamburgerMenu = () => setHamburgerState(!isHamburgerOpen);
 
   return (
-    <Overflow>
+    <View>
       <Container>
         <Icon
           name={isHamburgerOpen ? 'arrow-back' : 'menu'}
@@ -49,8 +41,11 @@ const Topbar = props => {
         />
         <Heading>{props.heading}</Heading>
       </Container>
-      <Hamburger toggleHamburger={toggleHamburgerMenu} isOpen={isHamburgerOpen} />
-    </Overflow>
+      <Hamburger
+        toggleHamburger={toggleHamburgerMenu}
+        isOpen={isHamburgerOpen}
+      />
+    </View>
   );
 };
 
