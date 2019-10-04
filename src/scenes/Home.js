@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Topbar from '../components/Topbar';
 import Navbar from '../components/Navbar/Navbar';
+import Card from '../components/Card/Card';
 
 const Container = styled.View`
   background-color: ${({ theme }) => theme.color.white};
@@ -16,6 +17,12 @@ class Home extends Component {
     return (
       <Container>
         <Topbar heading="Home" />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <Navbar navigation={this.props.navigation} />
       </Container>
     );
