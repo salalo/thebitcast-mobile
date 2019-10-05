@@ -34,7 +34,7 @@ const UserEmail = styled.Text`
 
 const Separator = styled.View`
   height: 1px;
-  margin: 30px 16px 15px 16px;
+  margin: 25px 16px 15px 12px;
   opacity: 0.1;
   background-color: ${({ theme }) => theme.color.black};
 `;
@@ -47,7 +47,7 @@ const FormList = styled.View`
 const ListItemBtn = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
-  padding: 15px 0 15px 16px;
+  padding: 13px 0 13px 16px;
 `;
 const ListItemText = styled.Text`
   font-family: 'Roboto-medium';
@@ -91,7 +91,7 @@ const HamburgerForm = () => {
             key={'btn__' + item.key}
             style={
               item.key === 'sign_out'
-                ? { position: 'absolute', bottom: 0, width: '100%' }
+                ? { position: 'absolute', bottom: 5, width: '100%' }
                 : null
             }>
             <Icon

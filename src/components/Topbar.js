@@ -33,7 +33,7 @@ const Topbar = props => {
     <View>
       <Container>
         <Icon
-          name={isHamburgerOpen ? 'arrow-back' : 'menu'}
+          name={'menu'}
           size={24}
           color={'#252525'}
           style={{ margin: 0, padding: 16 }}
