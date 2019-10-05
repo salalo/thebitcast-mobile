@@ -1,5 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Following = () => {};
+const Container = styled.View``;
+const Following = () => {
+  return <Container />;
+};
 
 export default Following;

@@ -51,13 +51,18 @@ const RouteConfigs = {
   },
 };
 
-const navbarStack = createMaterialBottomTabNavigator(RouteConfigs, {
+const NavbarNavigatorConfig = {
   initialRouteName: 'Home',
   activeColor: '#F44336',
   inactiveColor: '#252525',
   barStyle: { backgroundColor: '#ffffff' },
-});
+};
 
-const Navbar = createAppContainer(navbarStack);
+const NavbarStack = createMaterialBottomTabNavigator(
+  RouteConfigs,
+  NavbarNavigatorConfig,
+);
+
+const Navbar = createAppContainer(NavbarStack);
 
 export default Navbar;

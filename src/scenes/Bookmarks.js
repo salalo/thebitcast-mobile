@@ -1,5 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Bookmarks = () => {};
+const Container = styled.View``;
+
+const Bookmarks = () => {
+  return <Container />;
+};
 
 export default Bookmarks;

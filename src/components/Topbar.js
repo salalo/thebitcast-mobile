@@ -25,7 +25,7 @@ const Heading = styled.Text`
   text-align: center;
 `;
 
-const Topbar = props => {
+const Topbar = () => {
   const [isHamburgerOpen, setHamburgerState] = useState(false);
   const toggleHamburgerMenu = () => setHamburgerState(!isHamburgerOpen);
 
@@ -39,7 +39,7 @@ const Topbar = props => {
           style={{ margin: 0, padding: 16 }}
           onPress={isHamburgerOpen ? null : toggleHamburgerMenu}
         />
-        <Heading>{props.heading}</Heading>
+        <Heading>Home</Heading>
       </Container>
       <Hamburger
         toggleHamburger={toggleHamburgerMenu}
