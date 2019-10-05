@@ -52,7 +52,15 @@ const BookmarkAddBtnText = styled.Text`
 const Card = props => {
   const addToBookmarks = () => {
     console.log('added to bookmarks');
+    // use redux to post the info (addtoBookmarks wil be
+    // executed from another places as well)
+    //
+    // set podcast as bookmarked and
+    // remove it => don't render podcasts with bookmarked: true
+    //
+    // TODO: ? only one element can be swiped at the same time
   };
+
   const renderBookmarkAddBtn = () => {
     return (
       <BookmarkAddBtn onPress={addToBookmarks}>
