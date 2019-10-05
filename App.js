@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import MasterStyle from './src/assets/styles/MasterStyle';
+import * as Font from 'expo-font';
 import styled from 'styled-components';
-import Navigator from './src/Navigator';
+import MasterStyle from './src/assets/styles/MasterStyle';
 import { store } from './src/store';
+import Topbar from './src/components/Topbar';
+import Navbar from './src/components/Navbar/Navbar';
 
 const GlobalStyle = styled.View`
   background-color: ${({ theme }) => theme.color.black};
@@ -50,7 +51,9 @@ class App extends Component {
       <MasterStyle>
         <GlobalStyle>
           <Provider store={store}>
-            <Navigator />
+            <Topbar/>
+            {/* Navbar is the navigator itself*/}
+            <Navbar/>
           </Provider>
         </GlobalStyle>
       </MasterStyle>

@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  View,
   TouchableOpacity,
   StyleSheet,
   Dimensions,
   Platform,
-  useEffect,
   Animated,
   Easing,
 } from 'react-native';
 import HamburgerForm from './HamburgerForm';
-import { PanGestureHandler, State } from 'react-native-gesture-handler';
+// import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   Container: {
@@ -21,7 +19,7 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     right: 0,
-    zIndex: -1,
+    zIndex: 1,
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
     elevation: 5,
@@ -39,7 +37,7 @@ const Hamburger = ({ isOpen, toggleHamburger }) => {
   const [slideHamburger] = useState(
     new Animated.Value(isOpen ? -Dimensions.get('window').width : 0),
   );
-  React.useEffect(() => {
+  useEffect(() => {
     Animated.timing(slideHamburger, {
       toValue: isOpen ? 0 : -Dimensions.get('window').width,
       easing: Easing.inOut(Easing.quad),
@@ -48,7 +46,7 @@ const Hamburger = ({ isOpen, toggleHamburger }) => {
   });
 
   const [fadeRightInner] = useState(new Animated.Value(isOpen ? 0 : 0.24));
-  React.useEffect(() => {
+  useEffect(() => {
     Animated.timing(fadeRightInner, {
       toValue: isOpen ? 0.24 : 0,
       easing: Easing.linear,

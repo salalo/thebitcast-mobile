@@ -8,7 +8,6 @@ const CardList = props => {
     <FlatList
       style={{
         zIndex: -2,
-        marginBottom: 56,
       }}
       data={props.data}
       renderItem={({ item }) => <Card title={item.title} />}

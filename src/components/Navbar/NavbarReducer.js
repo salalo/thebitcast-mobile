@@ -1,9 +1,9 @@
-import Navigator from '../../Navigator';
+import Navbar from './Navbar';
 import { NavigationActions } from 'react-navigation';
 
 const initialAction = { type: NavigationActions.Init };
-const initialState = Navigator.router.getStateForAction(initialAction);
+const initialState = Navbar.router.getStateForAction(initialAction);
 
 export const NavbarReducer = (state = initialState, action) => {
-  return Navigator.router.getStateForAction(action, state);
+  return Navbar.router.getStateForAction(action, state);
 };
