@@ -14,15 +14,15 @@ class Home extends Component {
     const DATA = [
       {
         id: '9',
-        title: 'First Item',
+        title: 'The world wide best sample title ever made.',
       },
       {
         id: '8',
-        title: 'First Item',
+        title: 'Medium length title',
       },
       {
         id: '7',
-        title: 'First Item',
+        title: 'The world wide best sample title ever made.',
       },
       {
         id: '6',
@@ -30,15 +30,15 @@ class Home extends Component {
       },
       {
         id: '5',
-        title: 'Second Item',
+        title: 'Medium length title',
       },
       {
         id: '4',
-        title: 'Third Item',
+        title: 'The world wide best sample title ever made.',
       },
       {
         id: '3',
-        title: 'Third Item',
+        title: 'Medium length title',
       },
       {
         id: '2',
@@ -46,7 +46,7 @@ class Home extends Component {
       },
       {
         id: '1',
-        title: 'Third Item',
+        title: 'The world wide best sample title ever made.',
       },
       {
         id: '0',

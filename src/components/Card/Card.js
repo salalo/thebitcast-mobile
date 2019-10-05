@@ -2,19 +2,25 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import avatar from '../../assets/imgs/profile.png';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Container = styled.TouchableOpacity`
+// will be set to TouchableOpacity
+const Container = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 100px;
   padding: 10px 0 10px 16px;
+  elevation: 5;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 const PodcastInfo = styled.View`
   display: flex;
   flex-direction: column;
   height: 80px;
-  margin-left: 10px;
+  padding-left: 10px;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 const AuthorAvatar = styled.Image`
   height: 80px;
@@ -29,16 +35,43 @@ const PodcastAuthor = styled.Text`
   font-family: 'Roboto-light'
   font-size: 14px;
 `;
+const BookmarkAddBtn = styled.TouchableOpacity`
+  display: flex;
+  width: 130px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: ${({ theme }) => theme.color.main};
+`;
+const BookmarkAddBtnText = styled.Text`
+  color: ${({ theme }) => theme.color.white};
+  font-family: 'Roboto-regular';
+  font-size: 13px;
+`;
 
 const Card = props => {
+  const addToBookmarks = () => {
+    console.log('added to bookmarks');
+  };
+  const renderBookmarkAddBtn = () => {
+    return (
+      <BookmarkAddBtn onPress={addToBookmarks}>
+        <Icon name={'bookmark'} size={32} style={{ color: '#fff' }} />
+        <BookmarkAddBtnText>Add to bookmarks</BookmarkAddBtnText>
+      </BookmarkAddBtn>
+    );
+  };
+
   return (
-    <Container>
-      <AuthorAvatar source={avatar} />
-      <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
-        <PodcastTitle>{props.title}</PodcastTitle>
-        <PodcastAuthor>Gall Anonim</PodcastAuthor>
-      </PodcastInfo>
-    </Container>
+    <Swipeable renderRightActions={renderBookmarkAddBtn}>
+      <Container>
+        <AuthorAvatar source={avatar} />
+        <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
+          <PodcastTitle>{props.title}</PodcastTitle>
+          <PodcastAuthor>Gall Anonim</PodcastAuthor>
+        </PodcastInfo>
+      </Container>
+    </Swipeable>
   );
 };
 

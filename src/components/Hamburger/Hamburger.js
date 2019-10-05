@@ -8,7 +8,6 @@ import {
   Easing,
 } from 'react-native';
 import HamburgerForm from './HamburgerForm';
-// import { PanGestureHandler, State } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   Container: {
@@ -58,9 +57,6 @@ const Hamburger = ({ isOpen, toggleHamburger }) => {
   console.log(isOpen, Dimensions.get('window').width);
 
   return (
-    //       <PanGestureHandler
-    //         maxpointers={1}
-    //         onGestureEvent={this.props.toggleHamburger}>
     <Animated.View
       style={[
         styles.Container,
@@ -80,7 +76,6 @@ const Hamburger = ({ isOpen, toggleHamburger }) => {
         />
       </TouchableOpacity>
     </Animated.View>
-    //       </PanGestureHandler>
   );
 };
 
