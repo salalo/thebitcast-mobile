@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import styled from 'styled-components';
 import MasterStyle from './src/assets/styles/MasterStyle';
-import { store } from './src/store';
 import RootNavigator from './src/components/Navigators/RootNavigator';
 
 const GlobalStyle = styled.View`
@@ -49,9 +47,7 @@ class App extends Component {
     return (
       <MasterStyle>
         <GlobalStyle>
-          <Provider store={store}>
-            <RootNavigator />
-          </Provider>
+          <RootNavigator />
         </GlobalStyle>
       </MasterStyle>
     );
