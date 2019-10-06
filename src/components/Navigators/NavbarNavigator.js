@@ -1,5 +1,5 @@
 import React from 'react';
-import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
+import { Text } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Home from '../../scenes/Home';
 import Categories from '../../scenes/Categories';
@@ -60,8 +60,11 @@ const NavbarNavigatorConfig = {
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
     return {
-      headerTitle: routeName,
-      headerTitleStyle: { fontWeight: '500', marginLeft: 0, fontSize: 20 }
+      headerTitle: (
+        <Text style={{ fontFamily: 'Roboto-medium', fontSize: 20 }}>
+          {routeName}
+        </Text>
+      )
     };
   },
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import NavbarNavigator from './NavbarNavigator';
 import Icon from 'react-native-vector-icons/MaterialIcons';
