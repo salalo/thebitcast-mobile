@@ -5,8 +5,7 @@ import * as Font from 'expo-font';
 import styled from 'styled-components';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import { store } from './src/store';
-import Topbar from './src/components/Topbar';
-import Navbar from './src/components/Navbar/Navbar';
+import RootNavigator from './src/components/Navigators/RootNavigator';
 
 const GlobalStyle = styled.View`
   background-color: ${({ theme }) => theme.color.black};
@@ -32,7 +31,7 @@ class App extends Component {
       'Roboto-bold': require('./src/assets/fonts/Roboto-Bold.ttf'),
       'Roboto-black': require('./src/assets/fonts/Roboto-Black.ttf'),
 
-      Turret: require('./src/assets/fonts/TurretRoad-Regular.ttf'),
+      Turret: require('./src/assets/fonts/TurretRoad-Regular.ttf')
     });
     this.setState({ fontLoaded: true });
   }
@@ -51,9 +50,7 @@ class App extends Component {
       <MasterStyle>
         <GlobalStyle>
           <Provider store={store}>
-            <Topbar/>
-            {/* Navbar is the navigator itself*/}
-            <Navbar/>
+            <RootNavigator />
           </Provider>
         </GlobalStyle>
       </MasterStyle>

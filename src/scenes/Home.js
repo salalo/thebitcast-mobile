@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card/Card';
 import CardList from '../components/Card/CardList';
 
 const Container = styled.View`
@@ -14,44 +13,44 @@ class Home extends Component {
     const DATA = [
       {
         id: '9',
-        title: 'The world wide best sample title ever made.',
+        title: 'The world wide best sample title ever made.'
       },
       {
         id: '8',
-        title: 'Medium length title',
+        title: 'Medium length title'
       },
       {
         id: '7',
-        title: 'The world wide best sample title ever made.',
+        title: 'The world wide best sample title ever made.'
       },
       {
         id: '6',
-        title: 'First Item',
+        title: 'First Item'
       },
       {
         id: '5',
-        title: 'Medium length title',
+        title: 'Medium length title'
       },
       {
         id: '4',
-        title: 'The world wide best sample title ever made.',
+        title: 'The world wide best sample title ever made.'
       },
       {
         id: '3',
-        title: 'Medium length title',
+        title: 'Medium length title'
       },
       {
         id: '2',
-        title: 'Third Item',
+        title: 'Third Item'
       },
       {
         id: '1',
-        title: 'The world wide best sample title ever made.',
+        title: 'The world wide best sample title ever made.'
       },
       {
         id: '0',
-        title: 'Third Item',
-      },
+        title: 'Third Item'
+      }
     ];
 
     return (
