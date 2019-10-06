@@ -1,16 +1,15 @@
 import React from 'react';
+import { Platform, View } from 'react-native';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import userImg from '../../assets/imgs/profile.png';
 
-const Container = styled.View`
-  width: 70%;
-  height: 100%;
-  color: ${({ theme }) => theme.color.black};
-  background-color: ${({ theme }) => theme.color.white};
-`;
-
 const UserInfo = styled.TouchableOpacity`
+  margin-top: ${Platform.OS === 'android'
+    ? 24
+    : Platform.OS === 'ios'
+    ? 18
+    : 0};
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -62,23 +61,23 @@ const listItems = [
     key: 'stats-panel',
     text: 'Statistics panel',
     icon: 'insert-chart',
-    scene: 'Stats',
+    scene: 'Stats'
   },
   {
     key: 'our_mission',
     text: 'Our mission',
     icon: 'whatshot',
-    scene: 'Mission',
+    scene: 'Mission'
   },
   { key: 'premium', text: 'Premium', icon: 'star', scene: 'Premium' },
   { key: 'settings', text: 'Settings', icon: 'settings', scene: 'Settings' },
   { key: 'us', text: 'Us', icon: 'help', scene: 'Us' },
-  { key: 'sign_out', text: 'Sign out', icon: 'keyboard-tab', scene: 'NONE' },
+  { key: 'sign_out', text: 'Sign out', icon: 'keyboard-tab', scene: 'NONE' }
 ];
 
 const HamburgerForm = () => {
   return (
-    <Container>
+    <View>
       <UserInfo>
         <UserImage source={userImg} />
         <UserName>Olivia Heldens</UserName>
@@ -93,7 +92,8 @@ const HamburgerForm = () => {
               item.key === 'sign_out'
                 ? { position: 'absolute', bottom: 5, width: '100%' }
                 : null
-            }>
+            }
+          >
             <Icon
               name={item.icon}
               size={24}
@@ -110,13 +110,14 @@ const HamburgerForm = () => {
                 item.key === 'our_mission' || item.key === 'premium'
                   ? { color: '#F44336' }
                   : { color: '#252525' }
-              }>
+              }
+            >
               {item.text}
             </ListItemText>
           </ListItemBtn>
         ))}
       </FormList>
-    </Container>
+    </View>
   );
 };
 
