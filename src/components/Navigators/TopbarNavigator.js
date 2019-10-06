@@ -20,21 +20,6 @@ const TopbarNavigator = createStackNavigator(
           />
         )
       };
-    },
-    navigationOptions: {
-      header: navigation => ({
-        titleStyle: {
-          color: 'red'
-        },
-        tintColor: '#0087B7',
-        titleStyle: {
-          color: 'red'
-        }
-      })
-      // header: {
-      //   style: { backgroundColor: 'red' },
-      //   titleStyle: { color: 'green' }
-      // }
     }
   }
 );

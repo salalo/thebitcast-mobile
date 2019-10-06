@@ -60,7 +60,8 @@ const NavbarNavigatorConfig = {
   navigationOptions: ({ navigation }) => {
     const { routeName } = navigation.state.routes[navigation.state.index];
     return {
-      headerTitle: routeName
+      headerTitle: routeName,
+      headerTitleStyle: { fontWeight: '500', marginLeft: 0, fontSize: 20 }
     };
   },
 
