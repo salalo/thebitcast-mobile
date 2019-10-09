@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Home from '../../scenes/Home';
+import PodcastNavigator from './PodcastNavigator';
 import Categories from '../../scenes/Categories';
 import Following from '../../scenes/Following';
 import Bookmarks from '../../scenes/Bookmarks';
@@ -10,7 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const RouteConfigs = {
   Home: {
-    screen: Home,
+    screen: PodcastNavigator,
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Icon name={'home'} size={24} style={{ color: tintColor }} />
@@ -57,17 +56,6 @@ const NavbarNavigatorConfig = {
   activeColor: '#F44336',
   inactiveColor: '#252525',
   barStyle: { backgroundColor: '#ffffff' },
-  navigationOptions: ({ navigation }) => {
-    const { routeName } = navigation.state.routes[navigation.state.index];
-    return {
-      headerTitle: (
-        <Text style={{ fontFamily: 'Roboto-medium', fontSize: 20 }}>
-          {routeName}
-        </Text>
-      )
-    };
-  },
-
   tabBarOptions: {
     activeTintColor: '#F44336',
     inactiveTintColor: '#252525'

@@ -1,32 +1,36 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
-import NavbarNavigator from './NavbarNavigator';
+import { withNavigation } from 'react-navigation';
+import Home from '../../scenes/Home';
+import Podcast from '../../scenes/Podcast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const TopbarNavigator = createStackNavigator(
+const PodcastNavigator = createStackNavigator(
   {
-    NavbarNavigator
+    Home,
+    Podcast
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
-      const { routeName } = navigation.state.routes[navigation.state.index];
       return {
         headerLeft: (
           <Icon
-            name={'menu'}
+            name={navigation.state.routeName === 'Home' ? 'menu' : 'arrow-back'}
             size={24}
             color={'#252525'}
             style={{ margin: 0, padding: 16 }}
-            onPress={navigation.openDrawer}
+            onPress={
+              navigation.state.routeName === 'Home'
+                ? () => navigation.openDrawer()
+                : () => navigation.goBack()
+            }
           />
         ),
-        // remove default header in Home => replaced by podcastNavigator header
-        header: routeName === 'Home' ? null : 0,
 
         headerTitle: (
           <Text style={{ fontFamily: 'Roboto-medium', fontSize: 20 }}>
-            {routeName}
+            {navigation.state.routeName}
           </Text>
         )
       };
@@ -34,4 +38,4 @@ const TopbarNavigator = createStackNavigator(
   }
 );
 
-export default TopbarNavigator;
+export default withNavigation(PodcastNavigator);

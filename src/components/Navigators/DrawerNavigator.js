@@ -10,7 +10,7 @@ const DrawerNavigator = createDrawerNavigator(
   {
     contentComponent: HamburgerForm,
     drawerWidth: Dimensions.get('window').width * 0.7,
-    edgeWidth: Dimensions.get('window').width * 0.5
+    edgeWidth: Dimensions.get('window').width * 0.25
   }
 );
 

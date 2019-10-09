@@ -55,7 +55,7 @@ class Home extends Component {
 
     return (
       <Container>
-        <CardList data={DATA} />
+        <CardList data={DATA} navigation={this.props.navigation} />
       </Container>
     );
   }

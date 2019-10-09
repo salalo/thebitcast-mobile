@@ -6,13 +6,12 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // will be set to TouchableOpacity
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 100px;
   padding: 10px 0 10px 16px;
-  elevation: 5;
   background-color: ${({ theme }) => theme.color.white};
 `;
 const PodcastInfo = styled.View`
@@ -27,12 +26,12 @@ const AuthorAvatar = styled.Image`
   width: 80px;
 `;
 const PodcastTitle = styled.Text`
-  font-family: 'Roboto-regular'
+  font-family: 'Roboto-regular';
   font-size: 16px;
   margin: -4px 0 4px 0;
 `;
 const PodcastAuthor = styled.Text`
-  font-family: 'Roboto-light'
+  font-family: 'Roboto-light';
   font-size: 14px;
 `;
 const BookmarkAddBtn = styled.TouchableOpacity`
@@ -49,7 +48,7 @@ const BookmarkAddBtnText = styled.Text`
   font-size: 13px;
 `;
 
-const Card = props => {
+const Card = ({ title, navigation }) => {
   const addToBookmarks = () => {
     console.log('added to bookmarks');
     // use redux to post the info (addtoBookmarks wil be
@@ -72,10 +71,10 @@ const Card = props => {
 
   return (
     <Swipeable renderRightActions={renderBookmarkAddBtn}>
-      <Container>
+      <Container onPress={() => navigation.navigate('Podcast', title)}>
         <AuthorAvatar source={avatar} />
         <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
-          <PodcastTitle>{props.title}</PodcastTitle>
+          <PodcastTitle>{title}</PodcastTitle>
           <PodcastAuthor>Gall Anonim</PodcastAuthor>
         </PodcastInfo>
       </Container>

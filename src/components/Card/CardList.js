@@ -9,7 +9,9 @@ const CardList = props => {
         zIndex: -2
       }}
       data={props.data}
-      renderItem={({ item }) => <Card title={item.title} />}
+      renderItem={({ item }) => (
+        <Card navigation={props.navigation} title={item.title} />
+      )}
       keyExtractor={item => item.id}
     />
   );

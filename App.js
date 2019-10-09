@@ -4,6 +4,7 @@ import * as Font from 'expo-font';
 import styled from 'styled-components';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import RootNavigator from './src/components/Navigators/RootNavigator';
+import Navigator from './src/components/Navigators/AppNavigator';
 
 const GlobalStyle = styled.View`
   background-color: ${({ theme }) => theme.color.black};
