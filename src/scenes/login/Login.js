@@ -1,7 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import img from '../assets/imgs/loginScreenImg.png';
+import img from '../../assets/imgs/loginScreenImg.png';
+
+const ButtonsList = [
+  { name: 'Google', icon: 'google', color: '#FF3E30' },
+  { name: 'Facebook', icon: 'facebook', color: '#3B5998' },
+  { name: 'Twitter', icon: 'twitter', color: '#38A1F3' }
+];
+
+export default Login = () => {
+  return (
+    <Container>
+      <Hero>
+        <HeroText>Login to explore the best podcasts in the world. </HeroText>
+      </Hero>
+      <SignBtnsHolder>
+        {ButtonsList.map(item => (
+          <SignBtn
+            key={'btn__' + item.name}
+            style={{ backgroundColor: item.color }}
+          >
+            <Icon name={item.icon} size={24} style={{ color: '#fff' }} />
+            <SignBtnText>Sign up using {item.name}</SignBtnText>
+          </SignBtn>
+        ))}
+      </SignBtnsHolder>
+    </Container>
+  );
+};
 
 const Container = styled.View`
   width: 100%;
@@ -48,32 +75,3 @@ const SignBtnText = styled.Text`
   color: ${({ theme }) => theme.color.white};
   margin-left: 20px;
 `;
-
-const ButtonsList = [
-  { name: 'Google', icon: 'google', color: '#FF3E30' },
-  { name: 'Facebook', icon: 'facebook', color: '#3B5998' },
-  { name: 'Twitter', icon: 'twitter', color: '#38A1F3' }
-];
-
-const Login = () => {
-  return (
-    <Container>
-      <Hero>
-        <HeroText>Login to explore the best podcasts in the world. </HeroText>
-      </Hero>
-      <SignBtnsHolder>
-        {ButtonsList.map(item => (
-          <SignBtn
-            key={'btn__' + item.name}
-            style={{ backgroundColor: item.color }}
-          >
-            <Icon name={item.icon} size={24} style={{ color: '#fff' }} />
-            <SignBtnText>Sign up using {item.name}</SignBtnText>
-          </SignBtn>
-        ))}
-      </SignBtnsHolder>
-    </Container>
-  );
-};
-
-export default Login;

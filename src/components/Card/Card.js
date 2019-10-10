@@ -5,6 +5,40 @@ import avatar from '../../assets/imgs/profile.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+export default Card = ({ title, navigation }) => {
+  const addToBookmarks = () => {
+    console.log('added to bookmarks');
+    // use redux to post the info (addtoBookmarks wil be
+    // executed from another places as well)
+    //
+    // set podcast as bookmarked and
+    // remove it => don't render podcasts with bookmarked: true
+    //
+    // TODO: ? only one element can be swiped at the same time
+  };
+
+  const renderBookmarkAddBtn = () => {
+    return (
+      <BookmarkAddBtn onPress={addToBookmarks}>
+        <Icon name={'bookmark'} size={32} style={{ color: '#fff' }} />
+        <BookmarkAddBtnText>Add to bookmarks</BookmarkAddBtnText>
+      </BookmarkAddBtn>
+    );
+  };
+
+  return (
+    <Swipeable renderRightActions={renderBookmarkAddBtn}>
+      <Container onPress={() => navigation.navigate('Podcast', title)}>
+        <AuthorAvatar source={avatar} />
+        <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
+          <PodcastTitle>{title}</PodcastTitle>
+          <PodcastAuthor>Gall Anonim</PodcastAuthor>
+        </PodcastInfo>
+      </Container>
+    </Swipeable>
+  );
+};
+
 // will be set to TouchableOpacity
 const Container = styled.TouchableOpacity`
   display: flex;
@@ -47,39 +81,3 @@ const BookmarkAddBtnText = styled.Text`
   font-family: 'Roboto-regular';
   font-size: 13px;
 `;
-
-const Card = ({ title, navigation }) => {
-  const addToBookmarks = () => {
-    console.log('added to bookmarks');
-    // use redux to post the info (addtoBookmarks wil be
-    // executed from another places as well)
-    //
-    // set podcast as bookmarked and
-    // remove it => don't render podcasts with bookmarked: true
-    //
-    // TODO: ? only one element can be swiped at the same time
-  };
-
-  const renderBookmarkAddBtn = () => {
-    return (
-      <BookmarkAddBtn onPress={addToBookmarks}>
-        <Icon name={'bookmark'} size={32} style={{ color: '#fff' }} />
-        <BookmarkAddBtnText>Add to bookmarks</BookmarkAddBtnText>
-      </BookmarkAddBtn>
-    );
-  };
-
-  return (
-    <Swipeable renderRightActions={renderBookmarkAddBtn}>
-      <Container onPress={() => navigation.navigate('Podcast', title)}>
-        <AuthorAvatar source={avatar} />
-        <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
-          <PodcastTitle>{title}</PodcastTitle>
-          <PodcastAuthor>Gall Anonim</PodcastAuthor>
-        </PodcastInfo>
-      </Container>
-    </Swipeable>
-  );
-};
-
-export default Card;

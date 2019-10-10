@@ -1,10 +1,11 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import DrawerNavigator from './DrawerNavigator';
-import Login from '../../scenes/Login';
+import DrawerNavigator from '../components/Hamburger/HamburgerNavigator';
+import Login from './login/Login';
+import Loading from './Loading';
 
 const RootNavigatorStack = createSwitchNavigator({
   // Loading,
-  Login,
+  // Login,
   Main: { screen: DrawerNavigator }
 });
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import Card from './Card';
 
-const CardList = props => {
+export default CardList = props => {
   return (
     <FlatList
       style={{
@@ -16,5 +16,3 @@ const CardList = props => {
     />
   );
 };
-
-export default CardList;

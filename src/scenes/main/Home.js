@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import CardList from '../components/Card/CardList';
+import CardList from '../../components/Card/CardList';
 
-const Container = styled.View`
-  background-color: ${({ theme }) => theme.color.white};
-  width: 100%;
-  height: 100%;
-`;
-
-class Home extends Component {
+export default class Home extends Component {
   render() {
     const DATA = [
       {
@@ -61,4 +55,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const Container = styled.View`
+  background-color: ${({ theme }) => theme.color.white};
+  width: 100%;
+  height: 100%;
+`;

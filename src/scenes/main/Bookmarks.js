@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.View``;
-const Following = () => {
+export default Bookmarks = () => {
   return <Container />;
 };
 
-export default Following;
+const Container = styled.View``;

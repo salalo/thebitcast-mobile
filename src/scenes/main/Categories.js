@@ -1,6 +1,16 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+export default class Categories extends Component {
+  render() {
+    return (
+      <StyledCategories>
+        <Text>SHOPEN</Text>
+      </StyledCategories>
+    );
+  }
+}
+
 const StyledCategories = styled.View`
   background-color: ${({ theme }) => theme.color.white};
   width: 100%;
@@ -13,15 +23,3 @@ const Text = styled.Text`
   text-align: center;
   font-family: 'Roboto-regular';
 `;
-
-class Categories extends Component {
-  render() {
-    return (
-      <StyledCategories>
-        <Text>SHOPEN</Text>
-      </StyledCategories>
-    );
-  }
-}
-
-export default Categories;

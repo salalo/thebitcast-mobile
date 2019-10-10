@@ -2,8 +2,8 @@ import React from 'react';
 import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
-import Home from '../../scenes/Home';
-import Podcast from '../../scenes/Podcast';
+import Home from '../Home';
+import Podcast from './Podcast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const PodcastNavigator = createStackNavigator(

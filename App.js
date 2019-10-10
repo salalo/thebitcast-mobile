@@ -3,11 +3,9 @@ import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import styled from 'styled-components';
 import MasterStyle from './src/assets/styles/MasterStyle';
-import RootNavigator from './src/components/Navigators/RootNavigator';
-import Navigator from './src/components/Navigators/AppNavigator';
+import Navigator from './src/scenes/Navigator';
 
 const GlobalStyle = styled.View`
-  background-color: ${({ theme }) => theme.color.black};
   width: 100%;
   height: 100%;
   margin: 0;
@@ -15,7 +13,7 @@ const GlobalStyle = styled.View`
   border: 0;
 `;
 
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { fontLoaded: false };
@@ -48,11 +46,9 @@ class App extends Component {
     return (
       <MasterStyle>
         <GlobalStyle>
-          <RootNavigator />
+          <Navigator />
         </GlobalStyle>
       </MasterStyle>
     );
   }
 }
-
-export default App;
