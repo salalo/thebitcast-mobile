@@ -32,16 +32,9 @@ export default class App extends Component {
     });
     this.setState({ fontLoaded: true });
   }
-
   render() {
     if (!this.state.fontLoaded) {
-      return (
-        <MasterStyle>
-          <GlobalStyle>
-            <AppLoading />
-          </GlobalStyle>
-        </MasterStyle>
-      );
+      return <AppLoading />;
     }
     return (
       <MasterStyle>
