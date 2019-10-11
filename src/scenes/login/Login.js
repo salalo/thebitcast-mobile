@@ -67,7 +67,7 @@ const SignBtn = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.color.black};
   padding: 32px;
   elevation: 5;
-  border-radius: 3px;
+  border-radius: 2px;
 `;
 const SignBtnText = styled.Text`
   font-size: 16px;

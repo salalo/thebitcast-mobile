@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
 import styled from 'styled-components';
 import MasterStyle from './src/assets/styles/MasterStyle';
 import Navigator from './src/scenes/Navigator';
+import Amplify from 'aws-amplify';
+import awsmobile from './aws-exports';
+import Splash from './src/scenes/Splash';
 
 const GlobalStyle = styled.View`
   width: 100%;
@@ -30,11 +32,12 @@ export default class App extends Component {
 
       Turret: require('./src/assets/fonts/TurretRoad-Regular.ttf')
     });
+    Amplify.configure(awsmobile);
     this.setState({ fontLoaded: true });
   }
   render() {
     if (!this.state.fontLoaded) {
-      return <AppLoading />;
+      return <Splash />;
     }
     return (
       <MasterStyle>

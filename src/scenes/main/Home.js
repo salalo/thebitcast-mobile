@@ -1,55 +1,32 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CardList from '../../components/Card/CardList';
+import { API } from 'aws-amplify';
 
 export default class Home extends Component {
-  render() {
-    const DATA = [
-      {
-        id: '9',
-        title: 'The world wide best sample title ever made.'
-      },
-      {
-        id: '8',
-        title: 'Medium length title'
-      },
-      {
-        id: '7',
-        title: 'The world wide best sample title ever made.'
-      },
-      {
-        id: '6',
-        title: 'First Item'
-      },
-      {
-        id: '5',
-        title: 'Medium length title'
-      },
-      {
-        id: '4',
-        title: 'The world wide best sample title ever made.'
-      },
-      {
-        id: '3',
-        title: 'Medium length title'
-      },
-      {
-        id: '2',
-        title: 'Third Item'
-      },
-      {
-        id: '1',
-        title: 'The world wide best sample title ever made.'
-      },
-      {
-        id: '0',
-        title: 'Third Item'
-      }
-    ];
+  constructor(props) {
+    super(props);
+    this.state = { podcastData: [] };
+  }
+  async componentDidMount() {
+    try {
+      const data = await API.get('nameApi', '/name');
+      this.setState({
+        podcastData: data.DATA
+      });
+      console.log(this.state.podcastData);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
+  render() {
     return (
       <Container>
-        <CardList data={DATA} navigation={this.props.navigation} />
+        <CardList
+          data={this.state.podcastData}
+          navigation={this.props.navigation}
+        />
       </Container>
     );
   }
