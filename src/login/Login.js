@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import img from '../../assets/imgs/loginScreenImg.png';
+import img from '../assets/imgs/loginScreenImg.png';
 
 const ButtonsList = [
   { name: 'Google', icon: 'google', color: '#FF3E30' },

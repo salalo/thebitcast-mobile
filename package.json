@@ -6,6 +6,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@aws-amplify/api": "^1.2.2",
+    "@aws-amplify/pubsub": "^1.2.2",
     "aws-amplify": "^1.1.40",
     "expo": "^34.0.1",
     "expo-font": "^6.0.1",

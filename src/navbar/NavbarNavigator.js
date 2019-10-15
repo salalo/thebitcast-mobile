@@ -1,10 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import PodcastNavigator from './podcast/PodcastNavigator';
-import Categories from './Categories';
-import Following from './Following';
-import Bookmarks from './Bookmarks';
-import Search from './Search';
+import PodcastNavigator from '../podcast/PodcastNavigator';
+import Categories from '../Categories';
+import Following from '../Following';
+import Bookmarks from '../Bookmarks';
+import Search from '../Search';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const RouteConfigs = {

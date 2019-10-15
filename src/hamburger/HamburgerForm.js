@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, View } from 'react-native';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import userImg from '../../assets/imgs/profile.png';
+import userImg from '../assets/imgs/profile.png';
 
 const listItems = [
   { key: 'upload', text: 'Upload', icon: 'cloud-upload', scene: 'Upload' },

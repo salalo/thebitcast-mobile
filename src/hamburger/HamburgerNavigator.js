@@ -1,6 +1,6 @@
 import { Dimensions } from 'react-native';
 import { createDrawerNavigator } from 'react-navigation-drawer';
-import TopbarNavigator from '../Topbar/TopbarNavigator';
+import TopbarNavigator from '../topbar/TopbarNavigator';
 import HamburgerForm from './HamburgerForm';
 
 const DrawerNavigator = createDrawerNavigator(

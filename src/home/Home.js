@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import CardList from '../../components/Card/CardList';
-import { API } from 'aws-amplify';
+// import CardList from '../../components/Card/CardList';
+// import { API } from 'aws-amplify';
 
 export default class Home extends Component {
   constructor(props) {
@@ -9,15 +9,15 @@ export default class Home extends Component {
     this.state = { podcastData: [] };
   }
   async componentDidMount() {
-    try {
-      const data = await API.get('nameApi', '/name');
-      this.setState({
-        podcastData: data.DATA
-      });
-      console.log(this.state.podcastData);
-    } catch (err) {
-      console.error(err);
-    }
+    // try {
+    //   const data = await API.get('nameApi', '/name');
+    //   this.setState({
+    //     podcastData: data.DATA
+    //   });
+    //   console.log(this.state.podcastData);
+    // } catch (err) {
+    //   console.error(err);
+    // }
   }
 
   render() {
