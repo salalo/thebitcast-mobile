@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import * as Font from 'expo-font';
 import styled from 'styled-components';
+import Amplify from 'aws-amplify';
+import { Provider } from 'react-redux';
 import MasterStyle from '../assets/styles/MasterStyle';
 import Navigator from './Navigator';
-import Amplify from 'aws-amplify';
-// import awsmobile from './aws-exports';
 import Splash from './Splash';
+import store from './store';
+// import awsmobile from './aws-exports';
 
 const GlobalStyle = styled.View`
   width: 100%;
@@ -34,7 +36,7 @@ export default class App extends Component {
     });
 
     // Amplify.configure(awsmobile);
-    // this.setState({ fontLoaded: true });
+    this.setState({ fontLoaded: true });
   }
   render() {
     if (!this.state.fontLoaded) {
@@ -43,7 +45,9 @@ export default class App extends Component {
     return (
       <MasterStyle>
         <GlobalStyle>
-          <Navigator />
+          <Provider store={store}>
+            <Navigator />
+          </Provider>
         </GlobalStyle>
       </MasterStyle>
     );

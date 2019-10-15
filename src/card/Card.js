@@ -1,11 +1,11 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components';
-import avatar from '../../assets/imgs/profile.png';
+import avatar from '../assets/imgs/profile.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default Card = ({ title, navigation }) => {
+export default Card = ({ podcastInfo, navigation }) => {
   const addToBookmarks = () => {
     console.log('added to bookmarks');
     // use redux to post the info (addtoBookmarks wil be
@@ -25,14 +25,14 @@ export default Card = ({ title, navigation }) => {
       </BookmarkAddBtn>
     );
   };
-
+  console.log(podcastInfo.results);
   return (
     <Swipeable renderRightActions={renderBookmarkAddBtn}>
-      <Container onPress={() => navigation.navigate('Podcast', title)}>
+      <Container onPress={() => navigation.navigate('Podcast')}>
         <AuthorAvatar source={avatar} />
         <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
-          <PodcastTitle>{title}</PodcastTitle>
-          <PodcastAuthor>Gall Anonim</PodcastAuthor>
+          {/* <PodcastTitle>{podcastInfo.results.artistName}</PodcastTitle> */}
+          {/* <PodcastAuthor>{podcastInfo.results.artistName}</PodcastAuthor> */}
         </PodcastInfo>
       </Container>
     </Swipeable>
