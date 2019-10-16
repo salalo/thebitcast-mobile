@@ -25,7 +25,7 @@ function handleErrors(response) {
 }
 
 export const fetchPodcastCardInfoBegin = () => ({
-  type: FETCH_PODCAST_CARD_INFO_BEGIN,
+  type: FETCH_PODCAST_CARD_INFO_BEGIN
 });
 
 export const fetchPodcastCardInfoSuccess = podcast_info => ({
@@ -34,12 +34,12 @@ export const fetchPodcastCardInfoSuccess = podcast_info => ({
     podcast_info: {
       title: podcast_info.results[0].trackName,
       authorName: podcast_info.results[0].artistName,
-      podcastImg: podcast_info.results[0].artworkUrl100,
-    },
-  },
+      podcastImg: podcast_info.results[0].artworkUrl600
+    }
+  }
 });
 
 export const fetchPodcastCardInfoFailure = error => ({
   type: FETCH_PODCAST_CARD_INFO_FAILURE,
-  payload: { error },
+  payload: { error }
 });

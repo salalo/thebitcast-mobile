@@ -7,7 +7,7 @@ import MasterStyle from '../assets/styles/MasterStyle';
 import Navigator from './Navigator';
 import Splash from './Splash';
 import store from './store';
-// import awsmobile from './aws-exports';
+import awsmobile from '../../aws-exports';
 
 const GlobalStyle = styled.View`
   width: 100%;
@@ -33,10 +33,10 @@ export default class App extends Component {
       'Roboto-bold': require('../assets/fonts/Roboto-Bold.ttf'),
       'Roboto-black': require('../assets/fonts/Roboto-Black.ttf'),
 
-      Turret: require('../assets/fonts/TurretRoad-Regular.ttf'),
+      Turret: require('../assets/fonts/TurretRoad-Regular.ttf')
     });
 
-    // Amplify.configure(awsmobile);
+    Amplify.configure(awsmobile);
     this.setState({ fontLoaded: true });
   }
   render() {

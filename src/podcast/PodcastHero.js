@@ -7,7 +7,7 @@ export default PodcastHero = ({ podcastImg, title, authorName }) => {
   return (
     <Container>
       <Image
-        style={{ height: 100, width: 100, marginVertical: 50 }}
+        style={{ height: 150, width: 150, marginVertical: 50 }}
         source={{ uri: podcastImg }}
       />
       <Title>
