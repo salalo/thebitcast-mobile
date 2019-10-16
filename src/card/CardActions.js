@@ -5,7 +5,7 @@ export const FETCH_PODCAST_CARD_INFO_FAILURE =
   'FETCH_PODCAST_CARD_INFO_FAILURE';
 
 export function fetchPodcastCardInfo() {
-  const uri = `https://itunes.apple.com/search?media=podcast&term=Joe Rogan`;
+  const uri = `https://itunes.apple.com/search?media=podcast&term=karol Paciorek`;
   return dispatch => {
     dispatch(fetchPodcastCardInfoBegin());
     return fetch(uri)
@@ -13,7 +13,6 @@ export function fetchPodcastCardInfo() {
       .then(res => res.json())
       .then(json => {
         dispatch(fetchPodcastCardInfoSuccess(json));
-        //         console.log(json);
         return json;
       })
       .catch(error => dispatch(fetchPodcastCardInfoFailure(error)));
@@ -31,7 +30,13 @@ export const fetchPodcastCardInfoBegin = () => ({
 
 export const fetchPodcastCardInfoSuccess = podcast_info => ({
   type: FETCH_PODCAST_CARD_INFO_SUCCESS,
-  payload: { podcast_info },
+  payload: {
+    podcast_info: {
+      title: podcast_info.results[0].trackName,
+      authorName: podcast_info.results[0].artistName,
+      podcastImg: podcast_info.results[0].artworkUrl100,
+    },
+  },
 });
 
 export const fetchPodcastCardInfoFailure = error => ({

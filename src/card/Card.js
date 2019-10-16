@@ -1,7 +1,6 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, Image } from 'react-native';
 import styled from 'styled-components';
-import avatar from '../assets/imgs/profile.png';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -25,14 +24,19 @@ export default Card = ({ podcastInfo, navigation }) => {
       </BookmarkAddBtn>
     );
   };
-  console.log(podcastInfo.results);
+  console.log(podcastInfo);
   return (
     <Swipeable renderRightActions={renderBookmarkAddBtn}>
-      <Container onPress={() => navigation.navigate('Podcast')}>
-        <AuthorAvatar source={avatar} />
+      <Container
+        onPress={() => navigation.navigate('Podcast', { podcast: podcastInfo })}
+      >
+        <Image
+          source={{ uri: podcastInfo.podcastImg }}
+          style={{ height: 80, width: 80 }}
+        />
         <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
-          {/* <PodcastTitle>{podcastInfo.results.artistName}</PodcastTitle> */}
-          {/* <PodcastAuthor>{podcastInfo.results.artistName}</PodcastAuthor> */}
+          <PodcastTitle>{podcastInfo.title}</PodcastTitle>
+          <PodcastAuthor>{podcastInfo.authorName}</PodcastAuthor>
         </PodcastInfo>
       </Container>
     </Swipeable>
@@ -54,10 +58,6 @@ const PodcastInfo = styled.View`
   height: 80px;
   padding-left: 10px;
   background-color: ${({ theme }) => theme.color.white};
-`;
-const AuthorAvatar = styled.Image`
-  height: 80px;
-  width: 80px;
 `;
 const PodcastTitle = styled.Text`
   font-family: 'Roboto-regular';

@@ -27,12 +27,13 @@ export default class App extends Component {
     await Font.loadAsync({
       'Roboto-thin': require('../assets/fonts/Roboto-Thin.ttf'),
       'Roboto-light': require('../assets/fonts/Roboto-Light.ttf'),
+      'Roboto-light-italic': require('../assets/fonts/Roboto-LightItalic.ttf'),
       'Roboto-regular': require('../assets/fonts/Roboto-Regular.ttf'),
       'Roboto-medium': require('../assets/fonts/Roboto-Medium.ttf'),
       'Roboto-bold': require('../assets/fonts/Roboto-Bold.ttf'),
       'Roboto-black': require('../assets/fonts/Roboto-Black.ttf'),
 
-      Turret: require('../assets/fonts/TurretRoad-Regular.ttf')
+      Turret: require('../assets/fonts/TurretRoad-Regular.ttf'),
     });
 
     // Amplify.configure(awsmobile);

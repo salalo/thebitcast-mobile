@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import PodcastHero from './PodcastHero';
 
-export default Podcast = () => {
-  return (
-    <Container>
-      <Text>PODCAST</Text>
-    </Container>
-  );
-};
+export default class Podcast extends Component {
+  render() {
+    const { navigation } = this.props;
 
-const Container = styled.View``;
-const Text = styled.Text``;
+    return (
+      <Container>
+        <PodcastHero {...navigation.getParam('podcast')} />
+      </Container>
+    );
+  }
+}
+
+const Container = styled.View`
+  width: 100%;
+  height: 100%;
+`;

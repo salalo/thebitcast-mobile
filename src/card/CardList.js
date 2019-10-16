@@ -7,6 +7,9 @@ import Loading from '../app/Loading';
 
 class CardList extends Component {
   async componentDidMount() {
+    // get podcasts that would be recommended for a user
+    // pass the term that they will be fetched by and dispatch.
+    // ? List of recommended users in db?
     this.props.dispatch(fetchPodcastCardInfo());
   }
 
