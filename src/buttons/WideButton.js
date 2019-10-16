@@ -5,6 +5,7 @@ export default WideButton = ({ outline, text }) => {
   if (outline) {
     return (
       //set up navigation and link from props
+      // check
       <ContainerOutline>
         <TextOutline>{text}</TextOutline>
       </ContainerOutline>
