@@ -17,7 +17,7 @@ const activitiesItems = [
     icon: 'bookmark-border',
     method: 'bookmarkPodcast'
   },
-  { key: 'share', text: 'Share', icon: 'share', mathod: 'sharePodcast' }
+  { key: 'share', text: 'Share', icon: 'share', method: 'sharePodcast' }
 ];
 
 // TODO: write mathods which executes the activities and changes style of btn
@@ -39,7 +39,7 @@ export default PodcastFooter = ({}) => {
       </Description>
       <Activities>
         {activitiesItems.map(item => (
-          <ActivityItemBtn key={'item__' + item.key}>
+          <ActivityItemBtn key={'btn__' + item.key}>
             <Icon
               name={item.icon}
               size={28}
@@ -56,7 +56,7 @@ export default PodcastFooter = ({}) => {
 
 const Container = styled.View`
   width: 100%;
-  padding: 80px 32px 50px 32px;
+  padding: 80px 32px 120px 32px;
 `;
 const DescriptionHeader = styled.Text`
   color: ${({ theme }) => theme.color.main};
