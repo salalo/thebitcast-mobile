@@ -3,24 +3,29 @@ import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const activitiesItems = [
-  { key: 'like', text: '32', icon: 'thumb-up', method: 'likePodcast' },
-  { key: 'dislike', text: '12', icon: 'thumb-down', method: 'dislikePodcast' },
+  { key: 'like', text: '32', icon: 'thumb-up', method: likePodcast },
+  { key: 'dislike', text: '12', icon: 'thumb-down', method: dislikePodcast },
   {
     key: 'download',
     text: 'Download',
     icon: 'file-download',
-    method: 'downloadPodcast'
+    method: downloadPodcast
   },
   {
     key: 'bookmark',
     text: 'Bookmark',
     icon: 'bookmark-border',
-    method: 'bookmarkPodcast'
+    method: bookmarkPodcast
   },
-  { key: 'share', text: 'Share', icon: 'share', method: 'sharePodcast' }
+  { key: 'share', text: 'Share', icon: 'share', method: sharePodcast }
 ];
 
 // TODO: write mathods which executes the activities and changes style of btn
+function likePodcast() {}
+function dislikePodcast() {}
+function downloadPodcast() {}
+function bookmarkPodcast() {}
+function sharePodcast() {}
 
 export default PodcastFooter = ({}) => {
   return (
@@ -39,7 +44,7 @@ export default PodcastFooter = ({}) => {
       </Description>
       <Activities>
         {activitiesItems.map(item => (
-          <ActivityItemBtn key={'btn__' + item.key}>
+          <ActivityItemBtn key={'btn__' + item.key} onPress={item.method()}>
             <Icon
               name={item.icon}
               size={28}

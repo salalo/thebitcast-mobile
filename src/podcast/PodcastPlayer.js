@@ -1,74 +1,144 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Slider from 'react-native-slider';
 
-const playerItems = [
-  { key: 'time-mul', icon: 'timer', method: 'showTimeMul' },
-  { key: 'back-10s', icon: 'replay-10', method: 'back10Sec' },
-  {
-    key: 'play-pause',
-    icon: 'pause',
-    method: 'togglePause'
-  },
-  {
-    key: 'forward-10s',
-    icon: 'forward-10',
-    method: 'forward10Sec'
-  },
-  {
-    key: 'expand',
-    icon: 'keyboard-arrow-up',
-    method: 'expandPlayer'
-  }
-];
+export default class PodcastPlayer extends Component {
+  state = {
+    playerExpanded: false,
+    podcastCurrentTime: 40,
+    podcastMaxTime: 120
+  };
 
-export default PodcastPlayer = () => {
-  return (
-    <Container>
-      <Timeline />
-      <PlayerIcons>
-        {playerItems.map(item => (
-          <PlayerBtn key={'btn__' + item.key}>
-            <Icon
-              name={item.icon}
-              color={'#252525'}
-              size={item.key === 'play-pause' ? 36 : 26}
-              key={'icon__' + item.key}
+  showTimeMul = () => {};
+  back10Sec = () => {};
+  togglePause = () => {};
+  forward10Sec = () => {};
+  togglePlayerExpansion = () => {
+    console.log('playerExpanded:', this.state.playerExpanded);
+    this.setState({ playerExpanded: !this.state.playerExpanded });
+  };
+  changePodcastCurrentTime = time => {};
+
+  render() {
+    const playerItems = [
+      { key: 'time-mul', icon: 'timer', method: this.showTimeMul },
+      { key: 'back-10s', icon: 'replay-10', method: this.back10Sec },
+      {
+        key: 'play-pause',
+        icon: 'pause',
+        method: this.togglePause
+      },
+      {
+        key: 'forward-10s',
+        icon: 'forward-10',
+        method: this.forward10Sec
+      },
+      {
+        key: 'expand',
+        icon: 'keyboard-arrow-up',
+        method: this.togglePlayerExpansion
+      }
+    ];
+
+    return (
+      <Container style={{ height: this.state.playerExpanded ? 100 : 48 }}>
+        {this.state.playerExpanded ? (
+          <SliderContainer>
+            <SliderTime>{this.state.podcastCurrentTime}</SliderTime>
+            <Slider
+              value={this.state.podcastCurrentTime}
+              maximumValue={this.state.podcastMaxTime}
+              thumbTintColor="#F44336"
+              minimumTrackTintColor="#F44336"
+              maximumTrackTintColor="#ECECEC"
+              style={{
+                width: Dimensions.get('window').width * 0.7
+              }}
+              trackStyle={{ height: 2 }}
+              thumbStyle={{ width: 14, height: 14 }}
+              onValueChange={val =>
+                this.setState({ podcastCurrentTime: Math.floor(val) })
+              }
+              onSlidingComplete={val => changePodcastCurrentTime(val)}
             />
-          </PlayerBtn>
-        ))}
-      </PlayerIcons>
-    </Container>
-  );
-};
+            <SliderTime>{this.state.podcastMaxTime}</SliderTime>
+          </SliderContainer>
+        ) : (
+          <Slider
+            value={this.state.podcastCurrentTime}
+            maximumValue={this.state.podcastMaxTime}
+            thumbTintColor="rgba(0,0,0,0)"
+            minimumTrackTintColor="#F44336"
+            maximumTrackTintColor="rgba(0,0,0,0)"
+            style={{
+              backgroundColor: 'rgba(0,0,0,0)',
+              width: Dimensions.get('window').width,
+              position: 'absolute',
+              bottom: 27
+            }}
+            trackStyle={{ height: 2 }}
+            thumbStyle={{ width: 14, height: 14 }}
+          />
+        )}
+
+        <PlayerIcons>
+          {playerItems.map(item => (
+            <PlayerBtn key={'btn__' + item.key} onPress={() => item.method()}>
+              <Icon
+                name={
+                  item.key === 'expand'
+                    ? this.state.playerExpanded
+                      ? 'keyboard-arrow-down'
+                      : item.icon
+                    : item.icon
+                }
+                color={'#252525'}
+                size={item.key === 'play-pause' ? 36 : 26}
+                key={'icon__' + item.key}
+              />
+            </PlayerBtn>
+          ))}
+        </PlayerIcons>
+      </Container>
+    );
+  }
+}
 
 const Container = styled.View`
   position: absolute;
   bottom: -1;
   z-index: 2;
   width: 100%;
-  height: 48px;
   background-color: ${({ theme }) => theme.color.white};
   elevation: 5;
 `;
 const PlayerIcons = styled.View`
   width: 100%;
-  height: 100%;
+  height: 48px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  margin-top: auto;
 `;
 const PlayerBtn = styled.TouchableOpacity`
   height: 100%;
   min-width: 20%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-bottom: 5px;
+  justify-content: center;
 `;
-const Timeline = styled.View`
-  background-color: ${({ theme }) => theme.color.main};
-  height: 2px;
-  width: 40%;
+const SliderContainer = styled.View`
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+const SliderTime = styled.Text`
+  font-size: 14px;
+  font-family: 'Roboto-regular';
+  color: ${({ theme }) => theme.color.black};
 `;
