@@ -26,7 +26,6 @@ export default PodcastHero = ({ podcastImg, title, authorName }) => {
 
 const Container = styled.View`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
