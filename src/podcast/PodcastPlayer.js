@@ -3,12 +3,13 @@ import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from 'react-native-slider';
+import SoundPlayer from 'react-native-sound-player';
 
 export default class PodcastPlayer extends Component {
   state = {
     playerExpanded: false,
     podcastCurrentTime: 40,
-    podcastMaxTime: 120
+    podcastMaxTime: 120,
   };
 
   showTimeMul = () => {};
@@ -21,6 +22,17 @@ export default class PodcastPlayer extends Component {
   };
   changePodcastCurrentTime = time => {};
 
+  componentDidMount() {
+    try {
+      // or play from url
+      SoundPlayer.playUrl(
+        'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      );
+    } catch (e) {
+      console.log(`cannot play the sound file`, e);
+    }
+  }
+
   render() {
     const playerItems = [
       { key: 'time-mul', icon: 'timer', method: this.showTimeMul },
@@ -28,18 +40,18 @@ export default class PodcastPlayer extends Component {
       {
         key: 'play-pause',
         icon: 'pause',
-        method: this.togglePause
+        method: this.togglePause,
       },
       {
         key: 'forward-10s',
         icon: 'forward-10',
-        method: this.forward10Sec
+        method: this.forward10Sec,
       },
       {
         key: 'expand',
         icon: 'keyboard-arrow-up',
-        method: this.togglePlayerExpansion
-      }
+        method: this.togglePlayerExpansion,
+      },
     ];
 
     return (
@@ -54,7 +66,7 @@ export default class PodcastPlayer extends Component {
               minimumTrackTintColor="#F44336"
               maximumTrackTintColor="#ECECEC"
               style={{
-                width: Dimensions.get('window').width * 0.7
+                width: Dimensions.get('window').width * 0.7,
               }}
               trackStyle={{ height: 2 }}
               thumbStyle={{ width: 14, height: 14 }}
@@ -76,7 +88,7 @@ export default class PodcastPlayer extends Component {
               backgroundColor: 'rgba(0,0,0,0)',
               width: Dimensions.get('window').width,
               position: 'absolute',
-              bottom: 27
+              bottom: 27,
             }}
             trackStyle={{ height: 2 }}
             thumbStyle={{ width: 14, height: 14 }}

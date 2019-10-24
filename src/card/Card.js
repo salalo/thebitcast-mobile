@@ -1,10 +1,10 @@
 import React from 'react';
-import { Dimensions, Image } from 'react-native';
+import {Dimensions, Image} from 'react-native';
 import styled from 'styled-components';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default Card = ({ podcastInfo, navigation }) => {
+export default (Card = ({podcastInfo, navigation}) => {
   const addToBookmarks = () => {
     console.log('added to bookmarks');
     // use redux to post the info (addtoBookmarks wil be
@@ -19,7 +19,7 @@ export default Card = ({ podcastInfo, navigation }) => {
   const renderBookmarkAddBtn = () => {
     return (
       <BookmarkAddBtn onPress={addToBookmarks}>
-        <Icon name={'bookmark'} size={32} style={{ color: '#fff' }} />
+        <Icon name={'bookmark'} size={32} style={{color: '#fff'}} />
         <BookmarkAddBtnText>Add to bookmarks</BookmarkAddBtnText>
       </BookmarkAddBtn>
     );
@@ -28,20 +28,19 @@ export default Card = ({ podcastInfo, navigation }) => {
   return (
     <Swipeable renderRightActions={renderBookmarkAddBtn}>
       <Container
-        onPress={() => navigation.navigate('Podcast', { podcast: podcastInfo })}
-      >
+        onPress={() => navigation.navigate('Podcast', {podcast: podcastInfo})}>
         <Image
-          source={{ uri: podcastInfo.podcastImg }}
-          style={{ height: 80, width: 80 }}
+          source={{uri: podcastInfo.podcastImg}}
+          style={{height: 80, width: 80}}
         />
-        <PodcastInfo style={{ width: Dimensions.get('window').width - 116 }}>
+        <PodcastInfo style={{width: Dimensions.get('window').width - 116}}>
           <PodcastTitle>{podcastInfo.title}</PodcastTitle>
           <PodcastAuthor>{podcastInfo.authorName}</PodcastAuthor>
         </PodcastInfo>
       </Container>
     </Swipeable>
   );
-};
+});
 
 // will be set to TouchableOpacity
 const Container = styled.TouchableOpacity`
@@ -50,14 +49,14 @@ const Container = styled.TouchableOpacity`
   align-items: center;
   height: 100px;
   padding: 10px 0 10px 16px;
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({theme}) => theme.color.white};
 `;
 const PodcastInfo = styled.View`
   display: flex;
   flex-direction: column;
   height: 80px;
   padding-left: 10px;
-  background-color: ${({ theme }) => theme.color.white};
+  background-color: ${({theme}) => theme.color.white};
 `;
 const PodcastTitle = styled.Text`
   font-family: 'Roboto-regular';
@@ -74,10 +73,10 @@ const BookmarkAddBtn = styled.TouchableOpacity`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: ${({ theme }) => theme.color.main};
+  background-color: ${({theme}) => theme.color.main};
 `;
 const BookmarkAddBtnText = styled.Text`
-  color: ${({ theme }) => theme.color.white};
+  color: ${({theme}) => theme.color.white};
   font-family: 'Roboto-regular';
   font-size: 13px;
 `;

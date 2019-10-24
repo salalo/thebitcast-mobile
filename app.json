@@ -1,27 +1,4 @@
 {
-  "expo": {
-    "name": "The bitcast vMobile",
-    "slug": "thebitcast-mobile",
-    "privacy": "public",
-    "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android", "web"],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./src/assets/imgs/icon.png",
-    "splash": {
-      "image": "./src/assets/imgs/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    },
-    "entryPoint": "node_modules/expo/AppEntry.js"
-  },
-  "displayName": "App",
-  "name": "thebitcastMobile"
+  "name": "thebitcastMobile",
+  "displayName": "thebitcastMobile"
 }
