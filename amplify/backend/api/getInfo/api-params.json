@@ -1,30 +1,30 @@
 {
     "paths": [
         {
-            "name": "/user",
-            "lambdaFunction": "getUserInfo",
+            "name": "/info",
+            "lambdaFunction": "getInfoFunc",
             "privacy": {
                 "open": true
             }
         }
     ],
-    "resourceName": "userApi",
-    "apiName": "userApi",
+    "resourceName": "getInfo",
+    "apiName": "getInfo",
     "functionArns": [
         {
-            "lambdaFunction": "getUserInfo"
+            "lambdaFunction": "getInfoFunc"
         }
     ],
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "thebitcast-mobile-dev-20191016223515-authRole",
-        "unAuthRoleName": "thebitcast-mobile-dev-20191016223515-unauthRole"
+        "authRoleName": "thebitcastmobile-thebitcast-20191028190020-authRole",
+        "unAuthRoleName": "thebitcastmobile-thebitcast-20191028190020-unauthRole"
     },
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "getUserInfo",
+            "resourceName": "getInfoFunc",
             "attributes": [
                 "Name",
                 "Arn"

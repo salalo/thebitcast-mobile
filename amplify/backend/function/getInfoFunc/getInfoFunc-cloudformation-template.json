@@ -28,12 +28,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"getUserInfo",
+						"getInfoFunc",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"getUserInfo",
+									"getInfoFunc",
 									"-",
 									{
 										"Ref": "env"
@@ -62,8 +62,8 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "thebitcast-mobile-dev-20191016223515-deployment",
-					"S3Key": "amplify-builds/getUserInfo-6f57416c4a6e2f544432-build.zip"
+					"S3Bucket": "thebitcastmobile-thebitcast-20191028190020-deployment",
+					"S3Key": "amplify-builds/getInfoFunc-2f594373306d53564c58-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"thebitcastmobileLambdaRole119bee5b",
+						"thebitcastmobileLambdaRole146355f7",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"thebitcastmobileLambdaRole119bee5b",
+									"thebitcastmobileLambdaRole146355f7",
 									"-",
 									{
 										"Ref": "env"
