@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from 'react-native-slider';
 import Pplayer from 'react-native-sound-player';
+import moment from 'moment';
 
 export default class PodcastPlayer extends Component {
   state = {
@@ -14,31 +15,41 @@ export default class PodcastPlayer extends Component {
   };
 
   showTimeMul = () => {};
-  forward10Sec = () => {};
+  forward10Sec = () => {
+    console.log(this.state);
+    try {
+      Pplayer.seek(this.state.podcastCurrentTime + 10);
+    } catch (e) {
+      console.log('Couldnt skip 10s', e);
+    }
+  };
   back10Sec = () => {};
-  changePodcastCurrentTime = time => {};
+  changePodcastCurrentTime = time => {
+    try {
+      Pplayer.seek(time);
+    } catch (e) {
+      console.log('Couldnt change the time', e);
+    }
+  };
 
   togglePause = () => {
     try {
       if (this.state.podcastPlaying) Pplayer.pause();
       else Pplayer.resume();
       this.setState({podcastPlaying: !this.state.podcastPlaying});
-      console.log('podcastPlaying', this.state.podcastPlaying);
     } catch (e) {
       console.log('Couldnt pause the podcast', e);
     }
   };
 
   togglePlayerExpansion = async () => {
-    console.log('playerExpanded:', this.state.playerExpanded);
     this.setState({playerExpanded: !this.state.playerExpanded});
 
     try {
       const podcastInfo = await Pplayer.getInfo();
       await this.setState({
-        podcastCurrentTime: (podcastInfo.currentTime / 60).toFixed(2),
+        podcastCurrentTime: parseFloat(podcastInfo.currentTime * 1000),
       });
-      console.log('aaaaaaaa', (podcastInfo.currentTime / 60).toFixed(2));
     } catch (e) {
       console.log('error expanding the player:', e);
     }
@@ -52,9 +63,8 @@ export default class PodcastPlayer extends Component {
         );
         this.setState({podcastPlaying: true});
       }
-      // get podcast time and cut to 100th of a second
       const podcastInfo = await Pplayer.getInfo();
-      this.setState({podcastMaxTime: (podcastInfo.duration / 60).toFixed(2)});
+      this.setState({podcastMaxTime: podcastInfo.duration * 1000});
     } catch (e) {
       console.log(`cannot play the sound file`, e);
     }
@@ -87,7 +97,9 @@ export default class PodcastPlayer extends Component {
       <Container style={{height: this.state.playerExpanded ? 100 : 48}}>
         {this.state.playerExpanded ? (
           <SliderContainer>
-            <SliderTime>{this.state.podcastCurrentTime}</SliderTime>
+            <SliderTime>
+              {moment(this.state.podcastCurrentTime).format('mm:ss')}
+            </SliderTime>
             <Slider
               value={this.state.podcastCurrentTime}
               maximumValue={this.state.podcastMaxTime}
@@ -99,12 +111,12 @@ export default class PodcastPlayer extends Component {
               }}
               trackStyle={{height: 2}}
               thumbStyle={{width: 14, height: 14}}
-              onValueChange={val =>
-                this.setState({podcastCurrentTime: Math.floor(val)})
-              }
-              onSlidingComplete={val => changePodcastCurrentTime(val)}
+              onValueChange={val => this.setState({podcastCurrentTime: val})}
+              onSlidingComplete={val => this.changePodcastCurrentTime(val)}
             />
-            <SliderTime>{this.state.podcastMaxTime}</SliderTime>
+            <SliderTime>
+              {moment(this.state.podcastMaxTime).format('mm:ss')}
+            </SliderTime>
           </SliderContainer>
         ) : (
           <Slider
