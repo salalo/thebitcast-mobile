@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
 import PodcastPlayer from './PodcastPlayer';
 import PodcastHero from './PodcastHero';
@@ -6,11 +6,11 @@ import PodcastFooter from './PodcastFooter';
 
 export default class Podcast extends Component {
   render() {
-    const { navigation } = this.props;
+    const {navigation} = this.props;
 
     return (
       <Container>
-        <PodcastPlayer />
+        <PodcastPlayer {...navigation.getParam('podcast')} />
         <ScrollViewContainer>
           <PodcastHero {...navigation.getParam('podcast')} />
           <PodcastFooter {...navigation.getParam('podcast')} />

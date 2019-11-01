@@ -9,12 +9,17 @@ import moment from 'moment';
 export default class PodcastPlayer extends Component {
   state = {
     playerExpanded: false,
+    timeMulExpanded: false,
+    podcastPlaying: false,
     podcastCurrentTime: 0,
     podcastMaxTime: 0,
-    podcastPlaying: false,
+    podcastMul: 1,
   };
 
-  showTimeMul = () => {};
+  showTimeMul = () => {
+    this.setState({timeMulExpanded: !this.state.timeMulExpanded});
+    this.setState({playerExpanded: false});
+  };
 
   forward10Sec = () => {
     try {
@@ -40,6 +45,10 @@ export default class PodcastPlayer extends Component {
     }
   };
 
+  changePodcastCurrentMul = mul => {
+    // react-native-sound-player lib does not support speed config
+  };
+
   togglePause = () => {
     try {
       if (this.state.podcastPlaying) Pplayer.pause();
@@ -50,11 +59,13 @@ export default class PodcastPlayer extends Component {
     }
   };
 
-  togglePlayerExpansion = async () => {
+  togglePlayerExpansion = () => {
     this.setState({playerExpanded: !this.state.playerExpanded});
+    this.setState({timeMulExpanded: false});
   };
 
   async componentDidMount() {
+    console.log(this.props.podcastRSS);
     try {
       if (!this.state.podcastPlaying) {
         Pplayer.playUrl(
@@ -108,7 +119,11 @@ export default class PodcastPlayer extends Component {
     ];
 
     return (
-      <Container style={{height: this.state.playerExpanded ? 100 : 48}}>
+      <Container
+        style={{
+          height:
+            this.state.playerExpanded || this.state.timeMulExpanded ? 100 : 48,
+        }}>
         {this.state.playerExpanded ? (
           <SliderContainer>
             <SliderTime>
@@ -131,6 +146,28 @@ export default class PodcastPlayer extends Component {
             <SliderTime>
               {moment(this.state.podcastMaxTime).format('mm:ss')}
             </SliderTime>
+          </SliderContainer>
+        ) : this.state.timeMulExpanded ? (
+          // time multiplier slider
+          <SliderContainer>
+            <SliderMulText>{this.state.podcastMul}</SliderMulText>
+            <Slider
+              value={this.state.podcastMul}
+              minimumValue={0.25}
+              maximumValue={2}
+              step={0.25}
+              thumbTintColor="#F44336"
+              minimumTrackTintColor="#F44336"
+              maximumTrackTintColor="#ECECEC"
+              style={{
+                backgroundColor: 'rgba(0,0,0,0)',
+                width: Dimensions.get('window').width * 0.8,
+              }}
+              trackStyle={{height: 2}}
+              thumbStyle={{width: 14, height: 14}}
+              onValueChange={val => this.setState({podcastMul: val})}
+              onSlidingComplete={val => this.changePodcastCurrentMul(val)}
+            />
           </SliderContainer>
         ) : (
           <Slider
@@ -199,6 +236,11 @@ const SliderContainer = styled.View`
   align-items: center;
 `;
 const SliderTime = styled.Text`
+  font-size: 14px;
+  font-family: 'Roboto-regular';
+  color: ${({theme}) => theme.color.black};
+`;
+const SliderMulText = styled.Text`
   font-size: 14px;
   font-family: 'Roboto-regular';
   color: ${({theme}) => theme.color.black};

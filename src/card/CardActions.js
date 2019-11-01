@@ -35,11 +35,12 @@ export const fetchPodcastCardInfoSuccess = podcast_info => ({
       title: podcast_info.results[0].trackName,
       authorName: podcast_info.results[0].artistName,
       podcastImg: podcast_info.results[0].artworkUrl600,
+      podcastRSS: podcast_info.results[0].feedUrl,
     },
   },
 });
 
 export const fetchPodcastCardInfoFailure = error => ({
   type: FETCH_PODCAST_CARD_INFO_FAILURE,
-  payload: { error },
+  payload: {error},
 });
