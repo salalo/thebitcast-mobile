@@ -15,18 +15,26 @@ export default class PodcastPlayer extends Component {
   };
 
   showTimeMul = () => {};
+
   forward10Sec = () => {
-    console.log(this.state);
     try {
-      Pplayer.seek(this.state.podcastCurrentTime + 10);
+      Pplayer.seek(this.state.podcastCurrentTime / 1000 + 10);
     } catch (e) {
       console.log('Couldnt skip 10s', e);
     }
   };
-  back10Sec = () => {};
+
+  back10Sec = () => {
+    try {
+      Pplayer.seek(this.state.podcastCurrentTime / 1000 - 10);
+    } catch (e) {
+      console.log('Couldnt skip 10s', e);
+    }
+  };
+
   changePodcastCurrentTime = time => {
     try {
-      Pplayer.seek(time);
+      Pplayer.seek(this.state.podcastCurrentTime / 1000);
     } catch (e) {
       console.log('Couldnt change the time', e);
     }
@@ -44,15 +52,6 @@ export default class PodcastPlayer extends Component {
 
   togglePlayerExpansion = async () => {
     this.setState({playerExpanded: !this.state.playerExpanded});
-
-    try {
-      const podcastInfo = await Pplayer.getInfo();
-      await this.setState({
-        podcastCurrentTime: parseFloat(podcastInfo.currentTime * 1000),
-      });
-    } catch (e) {
-      console.log('error expanding the player:', e);
-    }
   };
 
   async componentDidMount() {
@@ -62,12 +61,27 @@ export default class PodcastPlayer extends Component {
           'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         );
         this.setState({podcastPlaying: true});
+        clearInterval(0);
       }
       const podcastInfo = await Pplayer.getInfo();
       this.setState({podcastMaxTime: podcastInfo.duration * 1000});
+
+      if (this.state.podcastPlaying) {
+        // enables live scroll update every .5sec
+        setInterval(async () => {
+          const podcastInfo = await Pplayer.getInfo();
+          console.log(podcastInfo.currentTime);
+          this.setState({podcastCurrentTime: podcastInfo.currentTime * 1000});
+        }, 500);
+      }
     } catch (e) {
       console.log(`cannot play the sound file`, e);
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(0);
+    Pplayer.stop();
   }
 
   render() {
