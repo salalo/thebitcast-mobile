@@ -62,8 +62,8 @@
 				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
-					"S3Bucket": "thebitcast-mobile-dev-20191016223515-deployment",
-					"S3Key": "amplify-builds/getUserInfo-6f57416c4a6e2f544432-build.zip"
+					"S3Bucket": "thebitcast-mobile-thebitcast-20191102180357-deployment",
+					"S3Key": "amplify-builds/getUserInfo-66743474766477664336-build.zip"
 				}
 			}
 		},
@@ -73,12 +73,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"thebitcastmobileLambdaRole119bee5b",
+						"thebitcastmobileLambdaRoledbe3e021",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"thebitcastmobileLambdaRole119bee5b",
+									"thebitcastmobileLambdaRoledbe3e021",
 									"-",
 									{
 										"Ref": "env"

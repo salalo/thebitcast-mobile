@@ -5,7 +5,7 @@ import Loading from './Loading';
 
 const RootNavigatorStack = createSwitchNavigator({
   // Loading,
-  // Login,
+  Login,
   Main: { screen: DrawerNavigator }
 });
 

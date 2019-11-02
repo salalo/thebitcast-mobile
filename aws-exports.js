@@ -2,6 +2,24 @@
 
 const awsmobile = {
     "aws_project_region": "eu-central-1",
+    "aws_cognito_identity_pool_id": "eu-central-1:7fe74bcb-c60b-4af0-9871-38221d31af3d",
+    "aws_cognito_region": "eu-central-1",
+    "aws_user_pools_id": "eu-central-1_68wK9Vgj9",
+    "aws_user_pools_web_client_id": "7c9gfou262vsn9skmkkthmcu4a",
+    "oauth": {
+        "domain": "thebitcast-thebitcast.auth.eu-central-1.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+            "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "https://lcoalhost:8081/",
+        "redirectSignOut": "https://localhost:8081/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
     "aws_cloud_logic_custom": [
         {
             "name": "userApi",

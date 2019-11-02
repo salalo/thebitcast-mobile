@@ -4,7 +4,15 @@
             "name": "/user",
             "lambdaFunction": "getUserInfo",
             "privacy": {
-                "open": true
+                "protected": true,
+                "auth": [],
+                "unauth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
             }
         }
     ],
@@ -17,9 +25,9 @@
     ],
     "privacy": {
         "auth": 0,
-        "unauth": 0,
-        "authRoleName": "thebitcast-mobile-dev-20191016223515-authRole",
-        "unAuthRoleName": "thebitcast-mobile-dev-20191016223515-unauthRole"
+        "unauth": 1,
+        "authRoleName": "thebitcast-mobile-thebitcast-20191102180357-authRole",
+        "unAuthRoleName": "thebitcast-mobile-thebitcast-20191102180357-unauthRole"
     },
     "dependsOn": [
         {

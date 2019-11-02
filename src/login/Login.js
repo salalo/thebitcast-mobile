@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import img from '../assets/imgs/loginScreenImg.png';
+import Auth from 'aws-amplify';
 
 const ButtonsList = [
   { name: 'Google', icon: 'google', color: '#FF3E30' },
@@ -20,6 +20,7 @@ export default Login = () => {
           <SignBtn
             key={'btn__' + item.name}
             style={{ backgroundColor: item.color }}
+            onPress={() => Auth.federatedSignIn({ provider: 'Facebook' })}
           >
             <Icon name={item.icon} size={24} style={{ color: '#fff' }} />
             <SignBtnText>Sign up using {item.name}</SignBtnText>
