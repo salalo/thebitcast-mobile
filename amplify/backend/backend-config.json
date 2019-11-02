@@ -1,19 +1,19 @@
 {
 	"function": {
-		"getInfoFunc": {
+		"getUserInfo": {
 			"service": "Lambda",
 			"providerPlugin": "awscloudformation",
 			"build": true
 		}
 	},
 	"api": {
-		"getInfo": {
+		"userApi": {
 			"service": "API Gateway",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": [
 				{
 					"category": "function",
-					"resourceName": "getInfoFunc",
+					"resourceName": "getUserInfo",
 					"attributes": [
 						"Name",
 						"Arn"

@@ -1,14 +1,14 @@
 {
-    "thebitcast": {
+    "dev": {
         "awscloudformation": {
-            "AuthRoleName": "thebitcastmobile-thebitcast-20191028190020-authRole",
-            "UnauthRoleArn": "arn:aws:iam::552542802351:role/thebitcastmobile-thebitcast-20191028190020-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::552542802351:role/thebitcastmobile-thebitcast-20191028190020-authRole",
+            "AuthRoleName": "thebitcast-mobile-dev-20191016223515-authRole",
+            "UnauthRoleArn": "arn:aws:iam::552542802351:role/thebitcast-mobile-dev-20191016223515-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::552542802351:role/thebitcast-mobile-dev-20191016223515-authRole",
             "Region": "eu-central-1",
-            "DeploymentBucketName": "thebitcastmobile-thebitcast-20191028190020-deployment",
-            "UnauthRoleName": "thebitcastmobile-thebitcast-20191028190020-unauthRole",
-            "StackName": "thebitcastmobile-thebitcast-20191028190020",
-            "StackId": "arn:aws:cloudformation:eu-central-1:552542802351:stack/thebitcastmobile-thebitcast-20191028190020/ceb1f110-f9ac-11e9-85a9-06dd2d585442"
+            "DeploymentBucketName": "thebitcast-mobile-dev-20191016223515-deployment",
+            "UnauthRoleName": "thebitcast-mobile-dev-20191016223515-unauthRole",
+            "StackName": "thebitcast-mobile-dev-20191016223515",
+            "StackId": "arn:aws:cloudformation:eu-central-1:552542802351:stack/thebitcast-mobile-dev-20191016223515/75e8f030-f054-11e9-8e82-063afe18f80a"
         }
     }
 }
