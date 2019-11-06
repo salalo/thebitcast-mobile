@@ -1,16 +1,30 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import PodcastPlayer from './PodcastPlayer';
 import PodcastHero from './PodcastHero';
 import PodcastFooter from './PodcastFooter';
 
 export default class Podcast extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { renderPlayer: true };
+    this.handlePlayerUnmount = this.handlePlayerUnmount.bind(this);
+  }
+
+  handlePlayerUnmount() {
+    this.setState({ renderPlayer: false });
+  }
   render() {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
 
     return (
       <Container>
-        <PodcastPlayer {...navigation.getParam('podcast')} />
+        {this.state.renderPlayer ? (
+          <PodcastPlayer
+            {...navigation.getParam('podcast')}
+            unmountSelf={this.handlePlayerUnmount}
+          />
+        ) : null}
         <ScrollViewContainer>
           <PodcastHero {...navigation.getParam('podcast')} />
           <PodcastFooter {...navigation.getParam('podcast')} />

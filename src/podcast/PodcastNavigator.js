@@ -3,13 +3,13 @@ import { Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { withNavigation } from 'react-navigation';
 import Home from '../home/Home';
-import Podcast from './Podcast';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Podcast from './Podcast';
 
 const PodcastNavigator = createStackNavigator(
   {
     Home,
-    Podcast
+    Podcast,
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
@@ -32,10 +32,10 @@ const PodcastNavigator = createStackNavigator(
           <Text style={{ fontFamily: 'Roboto-medium', fontSize: 20 }}>
             {navigation.state.routeName}
           </Text>
-        )
+        ),
       };
-    }
-  }
+    },
+  },
 );
 
 export default withNavigation(PodcastNavigator);

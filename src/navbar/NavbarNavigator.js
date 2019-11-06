@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import PodcastNavigator from '../podcast/PodcastNavigator';
-import Categories from '../Categories';
+import Categories from '../categories/Categories';
 import Following from '../Following';
 import Bookmarks from '../Bookmarks';
 import Search from '../Search';

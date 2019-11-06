@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Dimensions} from 'react-native';
+import React, { Component } from 'react';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from 'react-native-slider';
@@ -7,6 +7,11 @@ import Pplayer from 'react-native-sound-player';
 import moment from 'moment';
 
 export default class PodcastPlayer extends Component {
+  // executes unmount func from parent
+  destroySelf() {
+    this.props.unmountSelf();
+  }
+
   state = {
     playerExpanded: false,
     timeMulExpanded: false,
@@ -17,8 +22,8 @@ export default class PodcastPlayer extends Component {
   };
 
   showTimeMul = () => {
-    this.setState({timeMulExpanded: !this.state.timeMulExpanded});
-    this.setState({playerExpanded: false});
+    this.setState({ timeMulExpanded: !this.state.timeMulExpanded });
+    this.setState({ playerExpanded: false });
   };
 
   forward10Sec = () => {
@@ -53,15 +58,15 @@ export default class PodcastPlayer extends Component {
     try {
       if (this.state.podcastPlaying) Pplayer.pause();
       else Pplayer.resume();
-      this.setState({podcastPlaying: !this.state.podcastPlaying});
+      this.setState({ podcastPlaying: !this.state.podcastPlaying });
     } catch (e) {
       console.log('Couldnt pause the podcast', e);
     }
   };
 
   togglePlayerExpansion = () => {
-    this.setState({playerExpanded: !this.state.playerExpanded});
-    this.setState({timeMulExpanded: false});
+    this.setState({ playerExpanded: !this.state.playerExpanded });
+    this.setState({ timeMulExpanded: false });
   };
 
   async componentDidMount() {
@@ -71,18 +76,24 @@ export default class PodcastPlayer extends Component {
         Pplayer.playUrl(
           'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
         );
-        this.setState({podcastPlaying: true});
+        this.setState({ podcastPlaying: true });
         clearInterval(0);
       }
       const podcastInfo = await Pplayer.getInfo();
-      this.setState({podcastMaxTime: podcastInfo.duration * 1000});
+      this.setState({ podcastMaxTime: podcastInfo.duration * 1000 });
 
       if (this.state.podcastPlaying) {
         // enables live scroll update every .5sec
-        setInterval(async () => {
+        const intervalID = setInterval(async () => {
           const podcastInfo = await Pplayer.getInfo();
-          console.log(podcastInfo.currentTime);
-          this.setState({podcastCurrentTime: podcastInfo.currentTime * 1000});
+          //           console.log(podcastInfo.currentTime);
+          //           console.log(podcastInfo.currentTime);
+
+          if (podcastInfo.currentTime >= podcastInfo.duration) {
+            clearInterval(intervalID);
+            this.destroySelf();
+          }
+          this.setState({ podcastCurrentTime: podcastInfo.currentTime * 1000 });
         }, 500);
       }
     } catch (e) {
@@ -91,14 +102,14 @@ export default class PodcastPlayer extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(0);
+    clearInterval(this.intervalID);
     Pplayer.stop();
   }
 
   render() {
     const playerItems = [
-      {key: 'time-mul', icon: 'timer', method: this.showTimeMul},
-      {key: 'back-10s', icon: 'replay-10', method: this.back10Sec},
+      { key: 'time-mul', icon: 'timer', method: this.showTimeMul },
+      { key: 'back-10s', icon: 'replay-10', method: this.back10Sec },
       {
         key: 'play-pause',
         icon: this.state.podcastPlaying ? 'pause' : 'play-arrow',
@@ -138,9 +149,9 @@ export default class PodcastPlayer extends Component {
               style={{
                 width: Dimensions.get('window').width * 0.7,
               }}
-              trackStyle={{height: 2}}
-              thumbStyle={{width: 14, height: 14}}
-              onValueChange={val => this.setState({podcastCurrentTime: val})}
+              trackStyle={{ height: 2 }}
+              thumbStyle={{ width: 14, height: 14 }}
+              onValueChange={val => this.setState({ podcastCurrentTime: val })}
               onSlidingComplete={val => this.changePodcastCurrentTime(val)}
             />
             <SliderTime>
@@ -163,9 +174,9 @@ export default class PodcastPlayer extends Component {
                 backgroundColor: 'rgba(0,0,0,0)',
                 width: Dimensions.get('window').width * 0.8,
               }}
-              trackStyle={{height: 2}}
-              thumbStyle={{width: 14, height: 14}}
-              onValueChange={val => this.setState({podcastMul: val})}
+              trackStyle={{ height: 2 }}
+              thumbStyle={{ width: 14, height: 14 }}
+              onValueChange={val => this.setState({ podcastMul: val })}
               onSlidingComplete={val => this.changePodcastCurrentMul(val)}
             />
           </SliderContainer>
@@ -182,8 +193,8 @@ export default class PodcastPlayer extends Component {
               position: 'absolute',
               bottom: 27,
             }}
-            trackStyle={{height: 2}}
-            thumbStyle={{width: 14, height: 14}}
+            trackStyle={{ height: 2 }}
+            thumbStyle={{ width: 14, height: 14 }}
           />
         )}
 
@@ -209,7 +220,7 @@ const Container = styled.View`
   bottom: -1;
   z-index: 2;
   width: 100%;
-  background-color: ${({theme}) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.white};
   elevation: 5;
 `;
 const PlayerIcons = styled.View`
@@ -238,10 +249,10 @@ const SliderContainer = styled.View`
 const SliderTime = styled.Text`
   font-size: 14px;
   font-family: 'Roboto-regular';
-  color: ${({theme}) => theme.color.black};
+  color: ${({ theme }) => theme.color.black};
 `;
 const SliderMulText = styled.Text`
   font-size: 14px;
   font-family: 'Roboto-regular';
-  color: ${({theme}) => theme.color.black};
+  color: ${({ theme }) => theme.color.black};
 `;

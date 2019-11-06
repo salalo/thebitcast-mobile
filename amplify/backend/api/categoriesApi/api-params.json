@@ -1,0 +1,34 @@
+{
+    "paths": [
+        {
+            "name": "/categories",
+            "lambdaFunction": "getCategories",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "categoriesApi",
+    "apiName": "categoriesApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "getCategories"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "thebitcast-mobile-thebitcast-20191102180357-authRole",
+        "unAuthRoleName": "thebitcast-mobile-thebitcast-20191102180357-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "getCategories",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

@@ -28,10 +28,10 @@ const TopbarNavigator = createStackNavigator(
           <Text style={{ fontFamily: 'Roboto-medium', fontSize: 20 }}>
             {routeName}
           </Text>
-        )
+        ),
       };
-    }
-  }
+    },
+  },
 );
 
 export default TopbarNavigator;

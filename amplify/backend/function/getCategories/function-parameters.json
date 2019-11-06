@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "function": {
+            "getUserInfo": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

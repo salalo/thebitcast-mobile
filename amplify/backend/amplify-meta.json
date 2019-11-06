@@ -31,6 +31,20 @@
 				"LambdaExecutionRole": "thebitcastmobileLambdaRoledbe3e021-thebitcast"
 			},
 			"lastPushDirHash": "Ka0P0DtIU/w5LkgNSP1PVbZ5KSA="
+		},
+		"getCategories": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "getUserInfo",
+					"attributes": [
+						"Name"
+					]
+				}
+			]
 		}
 	},
 	"auth": {
@@ -81,6 +95,20 @@
 				"RootUrl": "https://3kfi84i6q3.execute-api.eu-central-1.amazonaws.com/thebitcast"
 			},
 			"lastPushDirHash": "7DL9fwG7Ankbs5K2blViAmAEAas="
+		},
+		"categoriesApi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "getCategories",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	}
 }
