@@ -9,7 +9,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "aws-amplify": "^1.2.3",
     "moment": "^2.24.0",
     "react": "16.9.0",
     "react-native": "0.61.2",
