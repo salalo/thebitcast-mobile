@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Auth from 'aws-amplify';
+import axios from 'axios';
+import { WebView } from 'react-native-webview';
 
 const ButtonsList = [
   { name: 'Google', icon: 'google', color: '#FF3E30' },
@@ -9,10 +10,13 @@ const ButtonsList = [
   { name: 'Twitter', icon: 'twitter', color: '#38A1F3' }
 ];
 
-export default Login = () => {
-  return (
-    <Container>
-      <Hero>
+async function showWebView() {}
+
+export default class Login extends Component {
+  render() {
+    return (
+      <Container>
+        {/* <Hero>
         <HeroText>Login to explore the best podcasts in the world. </HeroText>
       </Hero>
       <SignBtnsHolder>
@@ -20,16 +24,18 @@ export default Login = () => {
           <SignBtn
             key={'btn__' + item.name}
             style={{ backgroundColor: item.color }}
-            onPress={() => Auth.federatedSignIn({ provider: 'Facebook' })}
+            onPress={showWebView}
           >
             <Icon name={item.icon} size={24} style={{ color: '#fff' }} />
             <SignBtnText>Sign up using {item.name}</SignBtnText>
           </SignBtn>
         ))}
-      </SignBtnsHolder>
-    </Container>
-  );
-};
+      </SignBtnsHolder> */}
+        <WebView source={{ uri: 'http://192.168.1.105:8082/auth/facebook' }} />
+      </Container>
+    );
+  }
+}
 
 const Container = styled.View`
   width: 100%;

@@ -5,8 +5,8 @@ import Loading from './Loading';
 
 const RootNavigatorStack = createSwitchNavigator({
   // Loading,
-  // Login,
-  Main: { screen: DrawerNavigator },
+  Login,
+  //   Main: { screen: DrawerNavigator },
 });
 
 const RootNavigator = createAppContainer(RootNavigatorStack);
